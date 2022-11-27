@@ -1,0 +1,87 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<title>PlayStation 3/4/5 Jailbreak</title>
+<link rel="shortcut icon" href="favicon.ico">
+<style type="text/css">
+button {
+    background:rgba(0,0,0,0.5);
+    box-shadow: 0 0px 10px 0 black;
+    border: 5px solid #e2a110;
+    border-radius: 10px;          
+    text-align: center;
+    padding: 6px;
+    margin: 6px;
+}
+button:hover {
+    box-shadow: 0 0px 20px 0 white;
+    color: white;
+    border-radius: 10px;
+}
+.pointer {
+    cursor: pointer;
+}
+.yellow {
+    color:yellow;
+}
+.titleDiv {
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0px 0px 5px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(0, 0, 0);
+    animation: colorChangeTD 10s infinite;
+}
+#date {
+    float: left;
+}
+.title {
+    text-align: center;
+}
+#clock {
+    float: right;
+}
+#msgs {
+    font-size: 25px;
+    font-family: comic sans ms;
+}
+</style>
+<script>
+    function showdate() {
+  var dt = new Date();
+    Hour= dt.getHours();
+  Minute= dt.getMinutes();
+     Day=dt.getDate();
+   Month=dt.getMonth()+1;
+   Year=dt.getFullYear();
+if (Minute < 10) { Minute = "0" + Minute; };
+if (Hour < 10) { Hour = "0" + Hour; };
+document.getElementById("date").innerHTML = (Day+"/"+Month+"/"+Year);
+document.getElementById("clock").innerHTML = (Hour+":"+Minute);
+  }
+  
+  setInterval(showdate,0);
+</script>
+</head>   
+<body style="background-color:black;color:white;font-size:20px;text-align:center;font-family: sans-serif;">
+<div class="titleDiv">
+        <span id="clock">{CLOCK}</span>
+        <span class="title">Прошивка и запись игр на PlayStation 3/4/5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span id="date">{DATE}</span>
+    </div>
+<br><br>
+<h1 style='font-size:35px;margin:0;color:yellow'>Хост Для Playstation 3/4/5 Jailbreak</h1>
+<h2 id="msgs">Статус</h2>
+<a onmouseover="msgs.innerHTML='PS3 Jailbreak 4.84-4.89 fw'" onmouseout="msgs.innerHTML='status'" href="ps3/index.html"><button class="pointer"><img src="img/ps3.png"></button></a> &nbsp;&nbsp;
+<a onmouseover="msgs.innerHTML='PS4 Jailbreak 5.05-9.00 fw'" onmouseout="msgs.innerHTML='status'" href="ps4/index.html"><button class="pointer"><img src="img/ps4.png"></button></a> &nbsp;&nbsp;
+<a onmouseover="msgs.innerHTML='PS5 Debug Setting 3.00-4.51 fw'" onmouseout="msgs.innerHTML='status'" href="ps5/index.html"><button class="pointer"><img src="img/ps5.png"></button></a> &nbsp;&nbsp;
+<div style="position:fixed;left:0;bottom:20px;width:100%;font-size:25px;">
+*Дмитрий: <span style="text-shadow: 4px 4px 4px black;" class="yellow">+99897 7776749 </span> 
+*Телеграм Канал: <span style="text-shadow: 4px 4px 4px black;" class="yellow">@Game_Play_Station </span>
+*Телеграм Бот: <span style="text-shadow: 4px 4px 4px black;" class="yellow">@PS3_4Game_Bot </span>
+</div>
+</body>
+</html>
