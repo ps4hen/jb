@@ -12,6 +12,6 @@ localStorage.passcount = ++localStorage.passcount;window.passCounter.innerHTML=l
 }
 else {
 localStorage.failcount = ++localStorage.failcount;window.failCounter.innerHTML=localStorage.failcount;
-alert("Ошибка Активации, перезагрузите PS4 и повторите попытку.");
+alert("Jailbreak fail, restart your ps4 and try again");
      }
 }
