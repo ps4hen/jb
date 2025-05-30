@@ -34,7 +34,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 //     needed offsets on different firmwares (PS5).
 
 import { Int } from './module/int64.js';
-import { Memory } from './module/mem.js';
+import { Memory,mem } from './module/mem.js';
 import { KB, MB } from './module/offset.js';
 import { BufferView } from './module/rw.js';
 
@@ -859,6 +859,5 @@ async function main() {
     // path to your script that will use the exploit
     import('./lapse.js');
 }
-//main();
-setTimeout(main, 1500);
 setTimeout(StartTimer, 1500);
+setTimeout(main, 1500);
