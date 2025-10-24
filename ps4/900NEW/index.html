@@ -1,10 +1,23 @@
-<html>
+<html manifest="offlineCache.manifest">
 <head>
-<title>GoldHEN NOUSB [9.00]</title>
+<title>GoldHEN NEW [9.00]</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="/favicon.ico" />
 <meta charset="windows-1251"/>
 <link rel="stylesheet" href="/style.css">
+<script>
+function DLProgress(e){
+	Percent=(Math.round(e.loaded / e.total * 100));
+	parent.CacheBar.innerHTML="РЈСЃС‚Р°РЅРѕРІРєР° РѕС„Р»Р°Р№РЅ GoldHEN: " + Percent + "%";
+	parent.CacheBar.style.width=(Percent-2) + '%';
+}
+function DisplayCacheProgress(){
+	setTimeout(function(){parent.CacheBar.innerHTML="РћС„Р»Р°Р№РЅ РЈСЃС‚Р°РЅРѕРІР»РµРЅ. РћС‚РєР»СЋС‡РёС‚Рµ РёРЅС‚РµСЂРЅРµС‚ Рё СЃРЅРѕРІР° РѕС‚РєСЂРѕР№С‚Рµ Р±СЂР°СѓР·РµСЂ";},1000);}
+	window.applicationCache.addEventListener("progress",DLProgress,false);
+	window.applicationCache.oncached=function(e){localStorage.is7xxCached=true; DisplayCacheProgress();};
+	window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+	window.applicationCache.onerror=function(e){};
+</script>    
 <style>
  button
  {
@@ -41,10 +54,11 @@ line-height:40px
 <div id="tc">
 <img src="/sistro/hen.gif" id="henka" />
 <h3>
-<div id="message">ЖДИТЕ СООБЩЕНИЕ...<br/>не трогайте джойстик!</div>
+<div id="message">Г†Г„Г€Г’Г… Г‘ГЋГЋГЃГ™Г…ГЌГ€Г…...<br/>Г­ГҐ ГІГ°Г®ГЈГ Г©ГІГҐ Г¤Г¦Г®Г©Г±ГІГЁГЄ!</div>
 <div id="console" style="font-size:12px; color: green;"></div>
  <div id="progress" style="display:none"></div>
 </h3>
-<div style="position:absolute; width:99%; bottom:0; padding: 5px; color: orange" id="mess"> При появлении  непонятных сообщений перезапустите приставку! </div>
+<div style="position:absolute; width:99%; bottom:0; padding: 5px; color: orange" id="mess"> ГЏГ°ГЁ ГЇГ®ГїГўГ«ГҐГ­ГЁГЁ  Г­ГҐГЇГ®Г­ГїГІГ­Г»Гµ Г±Г®Г®ГЎГ№ГҐГ­ГЁГ© ГЇГҐГ°ГҐГ§Г ГЇГіГ±ГІГЁГІГҐ ГЇГ°ГЁГ±ГІГ ГўГЄГі! </div>
 </body>
+
 </html>
