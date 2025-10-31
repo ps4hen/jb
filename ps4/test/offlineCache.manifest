@@ -6,6 +6,7 @@ CACHE MANIFEST
 /style.css
 /favicon.ico
 /hen.gif
+/hen.png
 /900/config.js
 /900/goldhen.bin
 /900/lapse.js
@@ -30,4 +31,5 @@ NETWORK:
 
 SETTINGS:
 prefer-online
+
 
