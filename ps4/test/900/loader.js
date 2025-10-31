@@ -4,4 +4,4 @@ function EndTimer(){
     hrs=Math.floor(EndTime/1000/60/60);
     min=Math.floor(EndTime/1000/60-hrs*60)
     sec=Math.floor(EndTime/1000-min*60)
-    showMessage("<div style='color:green'>GoldHEN загружен за "+sec+" сек!</div> нажмите кнопку PS для выхода"); }
+    showMessage("<div style='color:green'>GoldHEN Р·Р°РіСЂСѓР¶РµРЅ Р·Р° "+sec+" СЃРµРє!</div> РЅР°Р¶РјРёС‚Рµ РєРЅРѕРїРєСѓ PS РґР»СЏ РІС‹С…РѕРґР°"); }
