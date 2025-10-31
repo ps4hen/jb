@@ -5,6 +5,7 @@ CACHE MANIFEST
 /ps4.jpg
 /style.css
 /favicon.ico
+/hen.gif
 /900/config.js
 /900/goldhen.bin
 /900/lapse.js
@@ -29,3 +30,4 @@ NETWORK:
 
 SETTINGS:
 prefer-online
+
