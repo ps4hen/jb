@@ -10,21 +10,18 @@
 </style>
 <script>
 function DLProgress(e){
-	parent.ScrOverlay.style.display="block";
 	Percent=(Math.round(e.loaded / e.total * 100));
-	parent.cacheUPDtxt.innerHTML="Установка Авто Активатора в Кэш: " + Percent + "%";
-	parent.CacheBar.style.width=Percent + '%';
+	parent.CacheBar.innerHTML="Установка офлайн GoldHEN: " + Percent + "%";
+	parent.CacheBar.style.width=(Percent-2) + '%';
 }
 function DisplayCacheProgress(){
-	setTimeout(function(){parent.cacheUPDtxt.innerHTML="Кэш успешно установлен. Отключите интернет и откройте браузер заново!!"; }, 1500);localStorage.cached672="yes";};
+	setTimeout(function(){parent.CacheBar.innerHTML="Офлайн Установлен. Отключите интернет и снова откройте браузер";},1000);}
 	window.applicationCache.addEventListener("progress",DLProgress,false);
-	window.applicationCache.oncached=function(e){DisplayCacheProgress();};
+	window.applicationCache.oncached=function(e){localStorage.is7xxCached=true; DisplayCacheProgress();};
 	window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
-	window.applicationCache.onnoupdate=function(){localStorage.cached672="yes";};
-    window.applicationCache.onerror=function(){localStorage.cached672="yes";};
+	window.applicationCache.onerror=function(e){};
 </script>
 </head>
-<body onload="vk1()">
 <h1 id="progress" class="titlehead">GoldHEN NOUSB [9.00] версии 2.4 b18.6</h1><hr>
 <div id="CacheBar">Выберите GoldHEN NOUSB [9.00] и дождитесь уведомления об успешной активации GoldHEN 2.4 b18.6</div>
 <hr>
