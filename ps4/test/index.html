@@ -1,4 +1,5 @@
-﻿<html manifest="offlinexmb.cache">
+<!DOCTYPE html>
+<html>
 <head>
 <title>GoldHEN NOUSB [9.00]</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -8,19 +9,17 @@
 <style>
  body { background: url("ps4.jpg") #111e2f no-repeat 0% 0%; background-position: right;  background-size: contain; }
 </style>
-<script>
-function DLProgress(e){
-	Percent=(Math.round(e.loaded / e.total * 100));
-	parent.CacheBar.innerHTML="Установка офлайн GoldHEN: " + Percent + "%";
-	parent.CacheBar.style.width=(Percent-2) + '%';
-}
-function DisplayCacheProgress(){
-	setTimeout(function(){parent.CacheBar.innerHTML="Офлайн Установлен. Отключите интернет и снова откройте браузер";},1000);}
-	window.applicationCache.addEventListener("progress",DLProgress,false);
-	window.applicationCache.oncached=function(e){localStorage.is7xxCached=true; DisplayCacheProgress();};
-	window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
-	window.applicationCache.onerror=function(e){};
-</script>
+    <script>
+        function showMessage(msg) {
+            document.getElementById("message").innerHTML = msg;
+        }
+    </script>
+    <script>
+        if (window.applicationCache.status=='0')
+        {
+          window.location.replace("cache.html");
+        }
+    </script>
 </head>
 <h1 id="progress" class="titlehead">GoldHEN NOUSB [9.00] версии 2.4 b18.6</h1><hr>
 <div id="CacheBar">Выберите GoldHEN NOUSB [9.00] и дождитесь уведомления об успешной активации GoldHEN 2.4 b18.6</div>
