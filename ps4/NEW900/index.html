@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html manifest="offlineCache.manifest">
+<head>
+<title>GoldHEN NOUSB [9.00]</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="style.css">
+<style>
+ body { background: url("ps4.jpg") #111e2f no-repeat 0% 0%; background-position: right;  background-size: contain; }
+</style>
+<script>
+function DLProgress(e){
+	Percent=(Math.round(e.loaded / e.total * 100));
+	parent.CacheBar.innerHTML="Установка офлайн GoldHEN: " + Percent + "%";
+	parent.CacheBar.style.width=(Percent-2) + '%';
+}
+function DisplayCacheProgress(){
+	setTimeout(function(){parent.CacheBar.innerHTML="Офлайн Установлен. Отключите интернет и снова откройте браузер";},1000);}
+	window.applicationCache.addEventListener("progress",DLProgress,false);
+	window.applicationCache.oncached=function(e){localStorage.is7xxCached=true; DisplayCacheProgress();};
+	window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+	window.applicationCache.onerror=function(e){};
+</script>
+</head>
+<h1 id="progress" class="titlehead">GoldHEN NOUSB [9.00] версии 2.4 b18.6</h1><hr>
+<div id="CacheBar">Выберите GoldHEN NOUSB [9.00] и дождитесь уведомления об успешной активации GoldHEN 2.4 b18.6</div>
+<hr>
+<br>
+<a href="900/index.html" class="button" style="color: gold; font-size: 40px; font-weight: bold">GoldHEN NOUSB [9.00]</a>
+<hr>
+  <div style="background-color:#032140;color:white;position:fixed;left:0;bottom:-0px;width:100%;text-align:center;">
+	<a style='font-size:20px;text-align:center;color:#FFD700;'>
+	*Дмитрий : <a style='font-size:20px;text-align:center;color:white;'> +99897 7776749&nbsp;<font style='color:#87FF33'>*Телеграм Канал : </font> @Game_Play_Station&nbsp;<font style='color:#87FF33'>*Телеграм Бот : </font> @PS3_4Game_Bot
+	
+<hr>
+</body>
+</html>
