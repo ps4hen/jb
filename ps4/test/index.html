@@ -1,4 +1,4 @@
-﻿<html manifest="offlineCache.manifest">
+﻿<html manifest="offlinexmb.cache">
 <head>
 <title>GoldHEN NOUSB [9.00]</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -10,16 +10,18 @@
 </style>
 <script>
 function DLProgress(e){
+	parent.ScrOverlay.style.display="block";
 	Percent=(Math.round(e.loaded / e.total * 100));
-	parent.CacheBar.innerHTML="Установка офлайн GoldHEN: " + Percent + "%";
-	parent.CacheBar.style.width=(Percent-2) + '%';
+	parent.cacheUPDtxt.innerHTML="Установка Авто Активатора в Кэш: " + Percent + "%";
+	parent.CacheBar.style.width=Percent + '%';
 }
 function DisplayCacheProgress(){
-	setTimeout(function(){parent.CacheBar.innerHTML="Офлайн Установлен. Отключите интернет и снова откройте браузер";},1000);}
+	setTimeout(function(){parent.cacheUPDtxt.innerHTML="Кэш успешно установлен. Отключите интернет и откройте браузер заново!!"; }, 1500);localStorage.cached672="yes";};
 	window.applicationCache.addEventListener("progress",DLProgress,false);
-	window.applicationCache.oncached=function(e){localStorage.is7xxCached=true; DisplayCacheProgress();};
+	window.applicationCache.oncached=function(e){DisplayCacheProgress();};
 	window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
-	window.applicationCache.onerror=function(e){};
+	window.applicationCache.onnoupdate=function(){localStorage.cached672="yes";};
+    window.applicationCache.onerror=function(){localStorage.cached672="yes";};
 </script>
 </head>
 <body onload="vk1()">
