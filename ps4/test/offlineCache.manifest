@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# v1.0 : 31-10-2025
+# v1.0 : 09-03-2021
  
 /index.html
 /ps4.jpg
@@ -25,6 +25,29 @@ CACHE MANIFEST
 /900/module/utils.js
 /900/module/view.js
 /900/rop/900.js
+/sistro/505/index.html
+/sistro/505/goldhen.bin
+/sistro/505/exploit.js
+/sistro/index.html
+/sistro/900/module/chain.mjs
+/sistro/900/module/constants.mjs
+/sistro/900/module/int64.mjs
+/sistro/900/module/mem.mjs
+/sistro/900/module/memtools.mjs
+/sistro/900/module/offset.mjs
+/sistro/900/module/rw.mjs
+/sistro/900/module/utils.mjs
+/sistro/900/20/goldhen.bin
+/sistro/900/20/index.html
+/sistro/900/goldhen.bin
+/sistro/900/index.html
+/sistro/900/int64.js
+/sistro/900/kexploit.js
+/sistro/900/rop.js
+/sistro/900/config.mjs
+/sistro/900/exploit.mjs
+/sistro/900/alert.mjs
+/sistro/hen.gif
 
 
 NETWORK:
@@ -32,6 +55,3 @@ NETWORK:
 
 SETTINGS:
 prefer-online
-
-
-
