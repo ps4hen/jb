@@ -35,7 +35,7 @@ document.getElementById('generate-cache-btn').addEventListener('click', () => {
       alert(data.message);
     })
     .catch(error => {
-      alert('Error: ' + error + "\nThis option only work on local server !\nPlease make sure you'r server is up.");
+      alert('Error: ' + error + "\nЭта опция работает только на локальном сервере !\nУбедитесь, что ваш сервер работает !");
     });
 });
 
@@ -43,10 +43,10 @@ document.getElementById('update-exploit').addEventListener('click', () => {
   fetch('/update_exploit', { method: 'POST' })
     .then(res => res.json())
     .then(data => {
-      document.getElementById('console').textContent = data.results.join('\n') + "\nPlease don't forget to update the cache !";
+      document.getElementById('console').textContent = data.results.join('\n') + "\nПожалуйста, не забудьте обновить кэш !";
     })
     .catch(err => {
-      alert('Error: ' + err + "\nThis option only work on local server !\nPlease make sure you'r server is up.");
+      alert('Error: ' + err + "\nЭта опция работает только на локальном сервере !\nУбедитесь, что ваш сервер работает !");
     });
 });
 
@@ -122,7 +122,7 @@ function CheckFW() {
       fwVersion === '8.50' || fwVersion === '8.52' || fwVersion === '9.04' ||
       fwVersion === '9.50' || fwVersion === '9.51'
     ) {
-      document.getElementById('PS4FW').textContent = `PS4 FW: ${fwVersion} | Compatible`;
+      document.getElementById('PS4FW').textContent = `PS4 FW: ${fwVersion} | Совместимая`;
       document.getElementById('PS4FW').style.color = 'green';
       ps4fw = fwVersion.replace('.', '');
       document.getElementById('install-psfrf').style.display = 'flex';
@@ -133,7 +133,7 @@ function CheckFW() {
         document.getElementById('linuxb').style.display = 'flex';
       }
     } else {
-      document.getElementById('PS4FW').textContent = `PS4 FW: ${fwVersion || 'Unknown'} | Incompatible`;
+      document.getElementById('PS4FW').textContent = `PS4 FW: ${fwVersion || 'Unknown'} | Не Совместимая`;
       document.getElementById('PS4FW').style.color = 'red';
 
       elementsToHide.forEach(id => {
@@ -152,7 +152,7 @@ function CheckFW() {
     else if (/Windows/.test(userAgent)) platform = 'Windows';
     else if (/Linux/.test(userAgent)) platform = 'Linux';
 
-    document.getElementById('PS4FW').textContent = `You're not on a PS4, platform: ${platform}`;
+    document.getElementById('PS4FW').textContent = `У вас не PS4, ваша платформа: ${platform}`;
     document.getElementById('PS4FW').style.color = 'red';
 
     elementsToHide.forEach(id => {
