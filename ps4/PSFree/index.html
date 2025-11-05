@@ -6,26 +6,26 @@
         function DisplayCacheProgress(){setTimeout(function(){;document.title="Cache Success !";},1000);setTimeout(function(){window.location.href = document.referrer;},3000);}window.applicationCache.addEventListener("progress",DLProgress,false);window.applicationCache.oncached=function(e){DisplayCacheProgress();};window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
     </script>
     <meta charset="UTF-8">
-    <title>PSFree</title>
+    <title>Активатор для 7.00 - 9.60</title>
     <link rel='stylesheet' href='./css/index.css'>
   </head>
   <body>
     <!-- Floating Menu -->
     <div class="floating-menu">
-      <button onclick="showpayloads()" class="menu-btn" id="payloadsbtn">Payloads</button>
-      <button class="menu-btn" id="generate-cache-btn">Force-Cache</button>
-      <button class="menu-btn" id="update-exploit">Update-Exploit</button>
-      <button onclick="showsettings()" class="menu-btn" id="settings-btn">Settings</button>
+      <button onclick="showpayloads()" class="menu-btn" id="payloadsbtn">Пайлоады</button>
+      <button class="menu-btn" id="generate-cache-btn">Принудительный-кэш</button>
+      <button class="menu-btn" id="update-exploit">Обновление-Эксплойт</button>
+      <button onclick="showsettings()" class="menu-btn" id="settings-btn">Настройки</button>
       <button onclick="showabout()" class="menu-btn" id="about-btn">About</button>
     </div>
 
     <div class="header">
-      <div class="header-title" id="header-title">PSFree</div>
+      <div class="header-title" id="header-title">Активатор для 7.00 - 9.60</div>
     </div>
 
     <pre id="update-results" style="white-space: pre-wrap; margin-top: 10px;"></pre>
 
-    <h2 id="PS4FW">PS4 FW: 0.00 | Compatible</h2>
+    <h2 id="PS4FW">PS4 FW: 0.00 | Совместимый</h2>
 
     <div id="jailbreak-page">
       <div class="center-btn-wrap">
@@ -41,22 +41,22 @@
     
     <div id="payloads-page" style="display: none;">
       <nav class="floating-menu-payloads">
-        <button id="toolb" onclick="showtoolspayloads()">Tools</button>
-        <button id="gameb" onclick="showgamepayloads()">Games</button>
+        <button id="toolb" onclick="showtoolspayloads()">Инструменты</button>
+        <button id="gameb" onclick="showgamepayloads()">Игры</button>
         <button style="display: none;" id="linuxb" onclick="showlinuxpayloads()">Linux</button>
       </nav>
       <div id="payloads-tools" style="display: block;">
-        <h2 id="tools">Tools</h2>
+        <h2 id="tools">Инструменты</h2>
           <div class="button-container" id="button-container">
             <button id="binloader">Bin-Loader</button>
             <button data-func="load_AppDumper">App-Dumper</button>
             <button data-func="load_KernelDumper">Kernel-Dumper</button>
             <button data-func="load_VTXDumper">PS4-Dumper-VTX</button>
             <button data-func="load_App2USB">App2USB</button>
-            <button data-func="load_DisableUpdates">Disable-Updates</button>
-            <button data-func="load_EnableUpdates">Enable-Updates</button>
+            <button data-func="load_DisableUpdates">Отключить-Обновления</button>
+            <button data-func="load_EnableUpdates">Включить-Обновления</button>
             <button data-func="load_FTP">FTP</button>
-            <button data-func="load_HistoryBlocker">History-Blocker</button>
+            <button data-func="load_HistoryBlocker">Блокировщик-Истории</button>
             <button data-func="load_KernelClock">Kernel-Clock</button>
             <!--<button data-func="load_Orbis">Orbis-Toolbox</button>-->
             <button data-func="load_PS4Debug">PS4-Debug</button>
@@ -76,7 +76,7 @@
           </div>
       </div>
       <div id="payloads-game" style="display: none;">
-        <h2 id="tools">Game</h2>
+        <h2 id="tools">Игры</h2>
           <div class="button-container" id="button-container">
             <button data-func="load_GTAArbic">GTAV-ArabicGuy-1.27</button>
             <button data-func="load_GTAArbic3">GTAV-ArabicGuy-1.32</button>
@@ -131,23 +131,10 @@
     <!-- About Popup -->
     <div class="overlay" id="overlay-popup"></div>
     <div class="popup" id="about-popup">
-      <h2>About PSFree</h2>
+      <h2>Информация о PSFree</h2>
       <div>
-        <p>Version: 1.5.1</p>
-        <p>A simple web interface for PS4 jailbreak.</p>
-      </div>
-      <div class="credits">
-        <h3>Credits</h3>
-        <div class="credits-container">
-          <a href="https://github.com/Al-Azif" target="_blank">Al-Azif</a>
-          <a href="https://github.com/kmeps4" target="_blank">kmeps4</a>
-          <a href="https://github.com/GoldHEN" target="_blank">GoldHEN</a>
-          <a href="https://github.com/Scene-Collective" target="_blank">Scene-Collective</a>
-          <a href="https://github.com/ps4boot" target="_blank">ps4boot</a>
-          <a href="https://github.com/SiSTR0" target="_blank">SiSTR0</a>
-          <a href="https://github.com/EchoStretch" target="_blank">EchoStretch</a>
-          <a href="https://github.com/Nazky" target="_blank">Nazky</a>
-        </div>
+        <p>Версия: 1.5.1</p>
+        <p>Простой веб-интерфейс для Активации PS4.</p>
       </div>
       <button onclick="closeabout()" class="close-btn" id="close-about"></button>
     </div>
@@ -155,11 +142,11 @@
     <!-- Settings Popup -->
     <div class="overlay" id="overlay-popup"></div>
     <div class="popup" id="settings-popup">
-      <h2>Settings PSFree</h2>
+      <h2>Настройки PSFree</h2>
       <div class="main-container">
         <div class="listfw-container">
           <div class="settings-container">
-            <h3>PS4 Firmwares supported</h3>
+            <h3>Поддерживаемые Прошивки PS4</h3>
             <div id="listfw">
               <p>7.00</p>
               <p>7.01</p>
@@ -184,7 +171,7 @@
         
         <div class="choosejb-container">
           <div class="settings-container">
-            <h3>Choose your flavor</h3>
+            <h3>Выберите на свой вкус</h3>
             <div class="radio-group">
               <label>
                 <input type="radio" name="hen" value="GoldHEN" onchange="savejbflavor(); choosejb('GoldHEN')"> GoldHEN
@@ -195,18 +182,18 @@
             </div>
               <label>
                 <input type="checkbox" id="ckbaj" />
-                <span>Auto-Jailbreak</span>
+                <span>Авто-Активатор</span>
               </label>
               <label>
                 <input type="checkbox" id="ckbdc" checked />
-                <span>Enable Debug Console</span>
+                <span>Включить Debug Console</span>
               </label>
           </div>
         </div>
       </div>
       
       <div class="button-container">
-        <button data-func="load_PSFreeFix" class="install-psfrf" id="install-psfrf" style="display: none;">Install PSFree-Fix</button>
+        <button data-func="load_PSFreeFix" class="install-psfrf" id="install-psfrf" style="display: none;">Установить PSFree-Fix</button>
       </div>
       <button onclick="closesettings()" class="close-btn" id="close-settings"></button>
     </div>
