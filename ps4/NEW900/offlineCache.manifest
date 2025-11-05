@@ -7,6 +7,7 @@ style.css
 favicon.ico
 hen.gif
 hen.png
+hen.jpg
 900/config.js
 900/goldhen.bin
 900/lapse.js
@@ -32,5 +33,6 @@ NETWORK:
 
 SETTINGS:
 prefer-online
+
 
 
