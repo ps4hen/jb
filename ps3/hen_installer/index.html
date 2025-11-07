@@ -3,7 +3,7 @@
 <head>
 <script src="ps3hen_v100.js"></script>
 <meta charset="UTF-8"> 
-<title>NIGHT KING PS3 HEN Installer</title>
+<title>PS3 HEN Установщик</title>
 <script>
 function downloadhen()
 {
@@ -88,7 +88,7 @@ function initROP(init)
 		if((j2===jump_2)&&(j1===jump_1)&&(x===xtra_data)&&(sf===stack_frame))
 		{
 			if(t_out!==0){clearTimeout(t_out);}
-			showResult(hr+"<h1><b><font color=%22386E38%22>HEN installer initialized successfully.</font></b></h1><h3><b><font color=%22000000%22><span style='color:#000000;'>You can now launch HEN installer!</span></b></h3>");
+			showResult(hr+"<h1><b><font color=%22386E38%22>HEN Установщик успешно инициализирован.</font></b></h1><h3><b><font color=%22000000%22><span style='color:#000000;'>Теперь вы можете запустить установщик HEN.!</span></b></h3>");
 			enable_trigger();
 		}
 		else
@@ -104,7 +104,7 @@ function initROP(init)
 	catch(e)
 	{
 		debug=true;
-		logAdd(br+"HEN Enabler initialization failed because the following exception was thrown during execution:"+br+e+" at : "+e.lineNumber);
+		logAdd(br+"Инициализация HEN Enabler не удалась, так как во время выполнения возникло следующее исключение:"+br+e+" at : "+e.lineNumber);
 		debug=false;
 	}
 }
@@ -112,24 +112,24 @@ function initROP(init)
 function triggerX()
 {
 		clearLogEntry();
-		showResult(hr+"<h2><b><span style='color:#000000;'>Installing HEN...</span></b></h2>");
+		showResult(hr+"<h2><b><span style='color:#000000;'>Установка HEN...</span></b></h2>");
 		disable_all();
 		setTimeout(trigger,1000,jump_1_addr);
-		setTimeout(rop_exit_hen,5000,hr+"<h1><b><font color=%22386E38%22>HEN is successfully installed</font></b></h1>","<h1><b><font color='red'>HEN Failure! Restart PS3 and retry!</font></b></h1>");
+		setTimeout(rop_exit_hen,5000,hr+"<h1><b><font color=%22386E38%22>HEN успешно установлен</font></b></h1>","<h1><b><font color='red'>Ошибка HEN! Перезагрузите PS3 и повторите попытку.!</font></b></h1>");
 		cleanGUI();
 }
 </script>
 </head>
 	<body id="bodyId" style="background-color:#FFD097" onload="javascript:downloadhen()">
 	<div id="headerId" style="color:#CC2010">
-	<h1>PS3 HEN Installer</h1>
-	<span style="color:#000000">Many thanks to xerpi for porting the memory leak exploit to ps3, zecoxao & Joonie for their early & renewed support, mysis for documenting vsh/lv2, SSL for his regular & precious advice, kakaroto for the PS3 IDA tools, naherwert for scetool, Rebug Team for producing/updating the only CFW adequate to develop this work & Cobra team for sharing their CobraUSB source, the psdevwiki team of course, STLcardsWS for his long standing contribution & ever constant support.<br>We also wish to thank all the ps3 community hackers/devs, past & present, who directly or indirectly helped us put this project together, you know who you are...</span><hr>
-	<h3>Supports CEX 4.84 - 4.89 HFW Firmware</h3>
-	<h2>ATTENTION:<br>YOU MUST TURN OFF BROWSER CONFIRM CLOSE OR INSTALLER WILL FAIL<br>Using the Alternate Method may be better for some users</font></h2>
-	<span style="color:#0055AA"><h3>INFO: If HEN is already installed, this will act as an Enabler</font></h3><br>
+	<h1>Установщик PS3 HEN</h1>
+	<span style="color:#000000">Большое спасибо herpi за портирование эксплойта утечки памяти на PS3, zecoxao и Joonie за их раннюю и возобновленную поддержку, mysis за документирование vsh/lv2, SSL за его регулярные и ценные советы, kakaroto за инструменты PS3 IDA, naherwert за scetool, Rebug Team за создание/обновление единственного CFW, достаточного для разработки этой работы, и команде Cobra за предоставление исходного кода CobraUSB, команде psdevwiki, конечно же, STLcardsWS за его многолетний вклад и постоянную поддержку.<br>Мы также хотим поблагодарить всех хакеров/разработчиков сообщества PS3, прошлых и настоящих, которые напрямую или косвенно помогли нам воплотить этот проект в жизнь, вы знаете, кто вы...</span><hr>
+	<h3>Поддерживает прошивки CEX 4.84 - 4.89 HFW</h3>
+	<h2>ВНИМАНИЕ:<br>ВЫ ДОЛЖНЫ ВЫКЛЮЧИТЬ БРАУЗЕР. ПОДТВЕРДИТЕ ЗАКРЫТЬ, ИНАЧЕ УСТАНОВКА ЗАВЕРШИТСЯ НЕУДАЧНО.<br>Использование альтернативного метода может быть более эффективным для некоторых пользователей.</font></h2>
+	<span style="color:#0055AA"><h3>ИНФОРМАЦИЯ: Если HEN уже установлен, это будет действовать как активатор</font></h3><br>
 	<hr></div>
-	<p><button id="btnROP" type="button" onclick="initROP(true);" autofocus>Initialize HEN installer</button> | Auto-Close Browser <input type="checkbox" id="auto_close" name="aclose" checked="checked" onclick="autoclose();"/><span id="dex_txt" style="visibility:hidden"> | DEX mode<input type="checkbox" id="dex" name="DEX" disabled="" onclick="dex();"/></span></p>
-	<p><button id="btnTrigger" disabled="" type="button" onclick="triggerX();">Install HEN</button><span id="reset" style="visibility:hidden"> | <button id="btnReset" type="button" onclick="disable_trigger();">Reset</button></span></p>
+	<p><button id="btnROP" type="button" onclick="initROP(true);" autofocus>Инициализировать установщик HEN</button> | Автоматическое закрытие браузера <input type="checkbox" id="auto_close" name="aclose" checked="checked" onclick="autoclose();"/><span id="dex_txt" style="visibility:hidden"> | DEX режим<input type="checkbox" id="dex" name="DEX" disabled="" onclick="dex();"/></span></p>
+	<p><button id="btnTrigger" disabled="" type="button" onclick="triggerX();">Установка HEN</button><span id="reset" style="visibility:hidden"> | <button id="btnReset" type="button" onclick="disable_trigger();">Перезагрузить</button></span></p>
 	<div id="result" style="color:#CC2010"></div><br>
 	<div id="log"></div>
 	<div id="exploit" ></div>
