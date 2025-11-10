@@ -168,7 +168,7 @@ window.toogle_payload = toogle_payload;
 
 function Exploit_done(){
 load_exploit_done();
-toogle_payload('goldhen.bin');
+toogle_payload('goldhen5.bin');
 }
 
 // sys/socket.h
@@ -1907,4 +1907,4 @@ export async function kexploit() {
     if (window.failCounter) window.failCounter.innerHTML = localStorage.failcount;
     return false;    
 }
-setTimeout(kexploit, 1100);
+// Auto-start removed - kexploit is called from psfree5.js main() function

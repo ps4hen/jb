@@ -792,7 +792,8 @@ async function main() {
 
     clear_log();
     // path to your script that will use the exploit
-    import('./lapse.js');
+    const lapseModule = await import('./lapse5.js');
+    await lapseModule.kexploit();
 }
 
 function checkGHBLS(){
