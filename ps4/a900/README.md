@@ -1,4 +1,4 @@
-# PlayStation Pulse PSFree Host 9.xx
+# PSFree Host 9.xx
 
 A modern, redesigned PlayStation 4 jailbreak host for firmware 9.xx with multi-version GoldHEN support. This project features a complete visual overhaul of the original PSFree exploit, with a sleek dark theme optimized for PS4 browsers, version selection system, and an extensive collection of homebrew payloads.
 
