@@ -1,6 +1,6 @@
 //------BIG THANKS TO SISTRO FOR THIS !!!!!--------
 
-var LoadedMSG = "Payload Loaded!";
+var LoadedMSG = "Payload Загружен!";
 
 var getPayload = function(payload, onLoadEndCallback) {
   var req = new XMLHttpRequest();
@@ -36,7 +36,7 @@ function Loadpayloadlocal(PLfile){ //Loading Payload via Payload Param.
     }
 		req.send();
 		req.onerror = function(){
-			console.log("BinLoader Server is not running, trying online payload loading...");
+			console.log("BinLoader Сервер не запущен, пытаюсь загрузить онлайн Payload...");
             Loadpayloadonline(PLfile);
 			return;
 		};
@@ -50,7 +50,7 @@ function Loadpayloadlocal(PLfile){ //Loading Payload via Payload Param.
                         if (req.status === 200) {
                             //alert("Payload sent !");
                         }else{
-                            console.log('Payload not sent, trying online payload loading...');
+                            console.log('Payload не отправлен, пробую онлайн Payload загрузку...');
                             setTimeout(() => {
                                 Loadpayloadonline(PLfile);
                             }, 3000); // 3 seconds delay
@@ -60,7 +60,7 @@ function Loadpayloadlocal(PLfile){ //Loading Payload via Payload Param.
                 }
 			});
 			} else {
-				alert("Cannot Load Payload Because The BinLoader Server Is Busy");//<<If server is busy, alert message.
+				alert("Невозможно загрузить Payload, так как сервер BinLoader занят");//<<If server is busy, alert message.
 				return;
 		  }
 	  };
@@ -78,14 +78,14 @@ function Loadpayloadonline(PLfile) {
     if (typeof window.toogle_payload === 'function') {
         window.toogle_payload(PLfile);
     } else {
-        console.log('Payload set for loading after exploit: ' + PLfile);
+        console.log('Payload настроен на загрузку после эксплойта: ' + PLfile);
     }
 }
 
 // PSFree Fix
 
 function load_PSFreeFix(){
-    const Confirmation = confirm("Are you sure you want to load the PSFree Fix payload?");
+    const Confirmation = confirm("Вы уверены, что хотите загрузить PSFree Fix? payload?");
     if (Confirmation) {
         // First try local loading through GoldHen
         Loadpayloadlocal("./payloads/ps4-psfree-fix.bin");
@@ -93,151 +93,151 @@ function load_PSFreeFix(){
         // Also show loading message
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "PSFree Fix Payload Loaded!";
+            LoadedMSG = "PSFree Fix Payload Загружен!";
         }
     }
 }
 
 // App2USB - Transfer Apps to USB
 function load_app2usb(){
-    const Confirmation = confirm("Load App2USB payload? This allows transferring applications to USB storage.");
+    const Confirmation = confirm("Загрузить Payload App2USB? Это позволяет переносить приложения на USB-накопитель..");
     if (Confirmation) {
         Loadpayloadlocal("./payloads/app2usb.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "App2USB Payload Loaded!";
+            LoadedMSG = "App2USB Payload Загружен!";
         }
     }
 }
 
 // AppCache Install
 function load_appcache_install(){
-    const Confirmation = confirm("Load AppCache Install payload?");
+    const Confirmation = confirm("Загрузить AppCache Install payload?");
     if (Confirmation) {
         Loadpayloadlocal("./payloads/appcache-install.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "AppCache Install Payload Loaded!";
+            LoadedMSG = "AppCache Install Payload Загружен!";
         }
     }
 }
 
 // Backup
 function load_backup(){
-    const Confirmation = confirm("Load Backup payload? This will backup your system data.");
+    const Confirmation = confirm("Загрузить Backup payload? Это позволит создать резервную копию ваших системных данных.");
     if (Confirmation) {
         Loadpayloadlocal("./payloads/backup.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "Backup Payload Loaded!";
+            LoadedMSG = "Backup Payload Загружен!";
         }
     }
 }
 
 // Disable Updates
 function load_disable_updates(){
-    const Confirmation = confirm("Load Disable Updates payload? This will block system updates.");
+    const Confirmation = confirm("Загрузить Disable Updates payload? Это заблокирует обновления системы.");
     if (Confirmation) {
         Loadpayloadlocal("./payloads/disable-updates.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "Disable Updates Payload Loaded!";
+            LoadedMSG = "Disable Updates Payload Загружен!";
         }
     }
 }
 
 // Enable Updates
 function load_enable_updates(){
-    const Confirmation = confirm("Load Enable Updates payload? This will allow system updates.");
+    const Confirmation = confirm("Загрузить Enable Updates payload? Это позволит обновлять систему.");
     if (Confirmation) {
         Loadpayloadlocal("./payloads/enable-updates.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "Enable Updates Payload Loaded!";
+            LoadedMSG = "Enable Updates Payload Загружен!";
         }
     }
 }
 
 // FTP Server
 function load_ftp(){
-    const Confirmation = confirm("Load FTP Server payload? This will start an FTP server on your PS4.");
+    const Confirmation = confirm("Загрузить FTP Server payload? Это запустит FTP-сервер на вашей PS4.");
     if (Confirmation) {
         Loadpayloadlocal("./payloads/ftp.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "FTP Server Payload Loaded!";
+            LoadedMSG = "FTP Server Payload Загружен!";
         }
     }
 }
 
 // History Blocker
 function load_history_blocker(){
-    const Confirmation = confirm("Load History Blocker payload? This will block browser history tracking.");
+    const Confirmation = confirm("Загрузить History Blocker payload? Это заблокирует отслеживание истории браузера.");
     if (Confirmation) {
         Loadpayloadlocal("./payloads/history-blocker.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "History Blocker Payload Loaded!";
+            LoadedMSG = "History Blocker Payload Загружен!";
         }
     }
 }
 
 // PS4 Debug
 function load_ps4debug(){
-    const Confirmation = confirm("Load PS4Debug payload? This enables debugging features.");
+    const Confirmation = confirm("Загрузить PS4Debug payload? Это включает функции отладки.");
     if (Confirmation) {
         Loadpayloadlocal("./payloads/ps4debug.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "PS4Debug Payload Loaded!";
+            LoadedMSG = "PS4Debug Payload Загружен!";
         }
     }
 }
 
 // PUP Decrypt
 function load_pup_decrypt(){
-    const Confirmation = confirm("Load PUP Decrypt payload? This allows decrypting PS4 update files.");
+    const Confirmation = confirm("Загрузить PUP Decrypt payload? Это позволяет расшифровать файлы обновления PS4.");
     if (Confirmation) {
         Loadpayloadlocal("./payloads/pup-decrypt.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "PUP Decrypt Payload Loaded!";
+            LoadedMSG = "PUP Decrypt Payload Загружен!";
         }
     }
 }
 
 // Restore
 function load_restore(){
-    const Confirmation = confirm("Load Restore payload? This will restore your system data.");
+    const Confirmation = confirm("Загрузить Restore payload? Это восстановит ваши системные данные.");
     if (Confirmation) {
         Loadpayloadlocal("./payloads/restore.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "Restore Payload Loaded!";
+            LoadedMSG = "Restore Payload Загружен!";
         }
     }
 }
 
 // RIF Renamer
 function load_rif_renamer(){
-    const Confirmation = confirm("Load RIF Renamer payload? This tool manages license files.");
+    const Confirmation = confirm("Загрузить RIF Renamer payload? Этот инструмент управляет файлами лицензий.");
     if (Confirmation) {
         Loadpayloadlocal("./payloads/rif-renamer.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "RIF Renamer Payload Loaded!";
+            LoadedMSG = "RIF Renamer Payload Загружен!";
         }
     }
 }
 
 // WebRTE
 function load_webrte(){
-    const Confirmation = confirm("Load WebRTE payload? This enables real-time editing features.");
+    const Confirmation = confirm("Загрузить WebRTE payload? Это позволяет использовать функции редактирования в реальном времени.");
     if (Confirmation) {
         Loadpayloadlocal("./payloads/WebRTE_900.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "WebRTE Payload Loaded!";
+            LoadedMSG = "WebRTE Payload Загружен!";
         }
     }
 }
