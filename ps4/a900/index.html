@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PSFree Host 9.xx</title>
+    <title>PSFree Хост 9.xx</title>
     <style>
         * {
             margin: 0;
@@ -313,9 +313,9 @@
     
     <div class="container">
         <div class="header-section">
-            <h1 class="main-title">PlayStation Pulse PSFree Host 9.xx</h1>
-            <p class="subtitle">Online and Offline Lapse Auto GoldHen by Telegram PlayStation Pulse</p>
-            <p class="version-info">PSfree1.5rc1 FW 9.xx GoldHEN v2.4b18.6</p>
+            <h1 class="main-title">PSFree Хост 9.xx</h1>
+            <p class="subtitle">Онлайн и Оффлайн Lapse Авто Активатор GoldHen</p>
+            <p class="version-info">FW 9.xx GoldHEN v2.4b18.6</p>
             <div class="fw-display">FW - <span id="PS4fw"></span></div>
         </div>
         
@@ -323,10 +323,10 @@
             <div id="notify" class="notification">
                 <div id="log"></div>
             </div>
-            <div class="jailbreak-status" id="msgs2">Ready to Jailbreak</div>
+            <div class="jailbreak-status" id="msgs2">Готов к Jailbreak</div>
             <div style="margin-top: 0.5rem; font-size: 0.9rem; color: #7172a1;">
-                <span>Successful attempts: <span id="passCounter" style="color: #10b981;">0</span></span>
-                <span style="margin-left: 1rem;">Unsuccessful attempts: <span id="failCounter" style="color: #ef4444;">0</span></span>
+                <span>Успешные попытки: <span id="passCounter" style="color: #10b981;">0</span></span>
+                <span style="margin-left: 1rem;">Неудачные попытки: <span id="failCounter" style="color: #ef4444;">0</span></span>
             </div>
         </div>
         
@@ -336,80 +336,80 @@
             <div class="section-title">Payloads</div>
             <div class="buttons-grid">
                 <button onclick="load_PSFreeFix()"
-                        onMouseOver="document.getElementById('msgs2').innerHTML='PSFree Fix - Fixes PS4 PSFree exploit issues'"
-                        onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                        onMouseOver="document.getElementById('msgs2').innerHTML='PSFree Fix - Устраняет проблемы с эксплойтом PSFree для PS4'"
+                        onmouseout="document.getElementById('msgs2').innerHTML='Готов к Jailbreak'">
                     PSFree Fix
                 </button>
                 
                 <button onclick="load_ftp()"
-                        onMouseOver="document.getElementById('msgs2').innerHTML='FTP Server - Start FTP server for file access'"
-                        onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                        onMouseOver="document.getElementById('msgs2').innerHTML='FTP Server - Запустить FTP-сервер для доступа к файлам'"
+                        onmouseout="document.getElementById('msgs2').innerHTML='Готов к Jailbreak'">
                     FTP Server
                 </button>
                 
                 <button onclick="load_ps4debug()"
-                        onMouseOver="document.getElementById('msgs2').innerHTML='PS4Debug - Enable debugging features'"
-                        onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                        onMouseOver="document.getElementById('msgs2').innerHTML='PS4Debug - Включить функции отладки'"
+                        onmouseout="document.getElementById('msgs2').innerHTML='Готов к Jailbreak'">
                     PS4Debug
                 </button>
                 
                 <button onclick="load_app2usb()"
-                        onMouseOver="document.getElementById('msgs2').innerHTML='App2USB - Transfer applications to USB storage'"
-                        onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                        onMouseOver="document.getElementById('msgs2').innerHTML='App2USB - Перенос приложений на USB-накопитель'"
+                        onmouseout="document.getElementById('msgs2').innerHTML='Готов к Jailbreak'">
                     App2USB
                 </button>
                 
                 <button onclick="load_backup()"
-                        onMouseOver="document.getElementById('msgs2').innerHTML='Backup - Backup system data to USB'"
-                        onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                        onMouseOver="document.getElementById('msgs2').innerHTML='Backup - Резервное копирование системных данных на USB'"
+                        onmouseout="document.getElementById('msgs2').innerHTML='Готов к Jailbreak'">
                     Backup
                 </button>
                 
                 <button onclick="load_restore()"
-                        onMouseOver="document.getElementById('msgs2').innerHTML='Restore - Restore system data from USB'"
-                        onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                        onMouseOver="document.getElementById('msgs2').innerHTML='Restore - Восстановление системных данных с USB'"
+                        onmouseout="document.getElementById('msgs2').innerHTML='Готов к Jailbreak'">
                     Restore
                 </button>
                 
                 <button onclick="load_disable_updates()"
-                        onMouseOver="document.getElementById('msgs2').innerHTML='Disable Updates - Block system updates'"
-                        onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                        onMouseOver="document.getElementById('msgs2').innerHTML='Disable Updates - Блокировать обновления системы'"
+                        onmouseout="document.getElementById('msgs2').innerHTML='Готов к Jailbreak'">
                     Disable Updates
                 </button>
                 
                 <button onclick="load_enable_updates()"
-                        onMouseOver="document.getElementById('msgs2').innerHTML='Enable Updates - Allow system updates'"
-                        onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                        onMouseOver="document.getElementById('msgs2').innerHTML='Enable Updates - Разрешить обновления системы'"
+                        onmouseout="document.getElementById('msgs2').innerHTML='Готов к Jailbreak'">
                     Enable Updates
                 </button>
                 
                 <button onclick="load_appcache_install()"
-                        onMouseOver="document.getElementById('msgs2').innerHTML='AppCache Install - Install application cache'"
-                        onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                        onMouseOver="document.getElementById('msgs2').innerHTML='AppCache Install - Установить кэш приложения'"
+                        onmouseout="document.getElementById('msgs2').innerHTML='Готов к Jailbreak'">
                     AppCache Install
                 </button>
                 
                 <button onclick="load_history_blocker()"
-                        onMouseOver="document.getElementById('msgs2').innerHTML='History Blocker - Block browser history tracking'"
-                        onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                        onMouseOver="document.getElementById('msgs2').innerHTML='History Blocker - Блокировать отслеживание истории браузера'"
+                        onmouseout="document.getElementById('msgs2').innerHTML='Готов к Jailbreak'">
                     History Blocker
                 </button>
                 
                 <button onclick="load_pup_decrypt()"
-                        onMouseOver="document.getElementById('msgs2').innerHTML='PUP Decrypt - Decrypt PS4 update files'"
-                        onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                        onMouseOver="document.getElementById('msgs2').innerHTML='PUP Decrypt - Расшифровать файлы обновления PS4'"
+                        onmouseout="document.getElementById('msgs2').innerHTML='Готов к Jailbreak'">
                     PUP Decrypt
                 </button>
                 
                 <button onclick="load_rif_renamer()"
-                        onMouseOver="document.getElementById('msgs2').innerHTML='RIF Renamer - Manage license files'"
-                        onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                        onMouseOver="document.getElementById('msgs2').innerHTML='RIF Renamer - Управление файлами лицензий'"
+                        onmouseout="document.getElementById('msgs2').innerHTML='Готов к Jailbreak'">
                     RIF Renamer
                 </button>
                 
                 <button onclick="load_webrte()"
-                        onMouseOver="document.getElementById('msgs2').innerHTML='WebRTE - Real-time editing features'"
-                        onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                        onMouseOver="document.getElementById('msgs2').innerHTML='WebRTE - Функции редактирования в реальном времени'"
+                        onmouseout="document.getElementById('msgs2').innerHTML='Готов к Jailbreak'">
                     WebRTE
                 </button>
             </div>
@@ -418,11 +418,11 @@
     
     <div class="credits">
         <div class="credits-line">
-            <span class="credit-label">Author:</span> 
-            <a href="https://t.me/sudoBlackArch" class="telegram-link">BlackArch</a>
+            <span class="credit-label">Дмитрий +99897 7776749:</span> 
+            <a href="https://t.me/+R9WNewSlKzMCzABX" class="telegram-link">Телеграм Канал:</a>
             <span style="margin: 0 1rem;">•</span>
-            <span class="credit-label">Telegram:</span> 
-            <a href="https://t.me/PlayStation_Pulse" class="credit-link">PlayStation Pulse</a>
+            <span class="credit-label">Телеграм Бот:</span> 
+            <a href="https://t.me/PS3_4Game_Bot" class="credit-link">Телеграм Бот:</a>
         </div>
     </div>
 
