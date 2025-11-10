@@ -127,7 +127,7 @@ async function use_after_free(pop_func, save) {
     let num_free = 0;
     function onblur() {
         if (num_free > 0)  {
-            die('multiple free()s, restart the entire exploit');
+            die('несколько функций пустые(), перезапустите весь эксплойт');
         }
         free(save);
         num_free++;
@@ -487,13 +487,13 @@ async function run_psfree(attempt = 1) {
     // debug_log(`[ PSFree - Attempt ${attempt} ]`);
     
     try {
-        debug_log('[ PSFree - Step 0 ]');
+        debug_log('[ PSFree - Шаг 0 ]');
         await get_ready();
 
-        debug_log('[ PSFree - Step 1 ]');
+        debug_log('[ PSFree - Шаг 1 ]');
         await use_after_free(pop, s1);
 
-        debug_log('[ PSFree - Step 2 ]');
+        debug_log('[ PSFree - Шаг 2 ]');
 
         // Timeout mechanism for step 2
         const step2Promise = new Promise(async (resolve, reject) => {
@@ -502,11 +502,11 @@ async function run_psfree(attempt = 1) {
             resolve();
         });
 
-        const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout during step 2')), 5000)); // 5 seconds timeout
+        const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Тайм-аут во время шага 2')), 5000)); // 5 seconds timeout
 
         await Promise.race([step2Promise, timeoutPromise]);
 
-        debug_log('[ PSFree - Step 3 ]');
+        debug_log('[ PSFree - Шаг 3 ]');
         await triple_free(s1, jsview, view_leak_arr, view_leak);
 
         // debug_log('[+] Webkit exploit (PSFree) succeeded');
@@ -577,7 +577,7 @@ async function run_psfree(attempt = 1) {
             await sleep(1000);
             return run_psfree(attempt + 1);
         } else {
-            die('PSFree exploit failed after multiple attempts');
+            die('Эксплойт PSFree не удался после нескольких попыток');
         }
     }
 }
