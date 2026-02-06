@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>PlayStation Pulse PS4 5.05 FW GoldHEN Host</title>
+    <title>PS4 5.05 FW GoldHEN Хост</title>
     <style>
         * {
             margin: 0;
@@ -281,8 +281,8 @@
 
 <body onload="if(localStorage.cached505=='yes')setTimeout(exploit, 50);">
     <script>
-        window.applicationCache.onprogress = function (a) { document.getElementById("msgs2").innerHTML = "Installing Offline Cache: " + (Math.round(100 * (a.loaded / a.total))) + "%"; };
-        window.applicationCache.oncached = function () { setTimeout(function () { document.getElementById("msgs2").innerHTML = "Cache Installed Successfully ✔"; }, 1500); setTimeout(function () { document.getElementById("msgs2").innerHTML = "Now Close And Re-Open Your Browser ..."; }, 3500); localStorage.cached505 = "yes"; };
+        window.applicationCache.onprogress = function (a) { document.getElementById("msgs2").innerHTML = "Установка оффлайн-кэша: " + (Math.round(100 * (a.loaded / a.total))) + "%"; };
+        window.applicationCache.oncached = function () { setTimeout(function () { document.getElementById("msgs2").innerHTML = "Кэш успешно установлен ✔"; }, 1500); setTimeout(function () { document.getElementById("msgs2").innerHTML = "Now Close And Re-Open Your Browser ..."; }, 3500); localStorage.cached505 = "yes"; };
         window.applicationCache.onnoupdate = function () { localStorage.cached505 = "yes"; };
         window.applicationCache.onerror = function () { localStorage.cached505 = "yes"; };
     </script>
@@ -295,17 +295,17 @@
 
     <div class="container">
         <div class="header-section">
-            <h1 class="main-title">PlayStation Pulse PS4 5.05 FW Host</h1>
-            <p class="subtitle">Offline Auto GoldHEN by Telegram PlayStation Pulse</p>
-            <p class="version-info">Firmware 5.05 • Auto GoldHEN Loader</p>
+            <h1 class="main-title">PS4 5.05 FW Хост</h1>
+            <p class="subtitle">Автоматический оффлайн GoldHEN</p>
+            <p class="version-info">Прошивка 5.05 • Автозагрузчик GoldHEN</p>
         </div>
 
         <div class="status-container">
             <div id="progress">
-                <div id="msgs2">Loading... Please Wait</div>
+                <div id="msgs2">Загрузка... Пожалуйста, подождите</div>
             </div>
             <div id="menu">
-                <div id="msgs">Ready to Jailbreak</div>
+                <div id="msgs">Готово к джейлбрейку</div>
             </div>
         </div>
 
@@ -313,11 +313,11 @@
             <div class="section-title">GoldHEN</div>
             <div class="buttons-grid-goldhen">
                 <button onclick="load_goldhen18()" onmouseover="msgs.innerHTML='GoldHEN v2.4b18.8 for 5.05 FW'"
-                    onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                    onmouseout="msgs.innerHTML='Готово к джейлбрейку'">
                     GoldHEN v2.4b18.8
                 </button>
                 <button onclick="load_goldhen5()" onmouseover="msgs.innerHTML='GoldHEN v2.4b18.5 for 5.05 FW'"
-                    onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                    onmouseout="msgs.innerHTML='Готово к джейлбрейку'">
                     GoldHEN v2.4b18.5
                 </button>
             </div>
@@ -325,69 +325,69 @@
             <div class="section-title">Payloads</div>
             <div class="buttons-grid">
                 <button onclick="load_ftp()"
-                    onmouseover="msgs.innerHTML='FTP Server - Start FTP server for file access'"
-                    onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                    onmouseover="msgs.innerHTML='FTP Server - Запустить FTP-сервер для доступа к файлам'"
+                    onmouseout="msgs.innerHTML='Готово к джейлбрейку'">
                     FTP Server
                 </button>
 
-                <button onclick="load_ps4debug()" onmouseover="msgs.innerHTML='PS4Debug - Enable debugging features'"
-                    onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                <button onclick="load_ps4debug()" onmouseover="msgs.innerHTML='PS4Debug - Включить функции отладки'"
+                    onmouseout="msgs.innerHTML='Готово к джейлбрейку'">
                     PS4Debug
                 </button>
 
                 <button onclick="load_app2usb()"
-                    onmouseover="msgs.innerHTML='App2USB - Transfer applications to USB storage'"
-                    onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                    onmouseover="msgs.innerHTML='App2USB - Перенос приложений на USB-накопитель'"
+                    onmouseout="msgs.innerHTML='Готово к джейлбрейку'">
                     App2USB
                 </button>
 
-                <button onclick="load_backup()" onmouseover="msgs.innerHTML='Backup - Backup system data to USB'"
-                    onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                <button onclick="load_backup()" onmouseover="msgs.innerHTML='Backup - Резервное копирование системных данных на USB'"
+                    onmouseout="msgs.innerHTML='Готово к джейлбрейку'">
                     Backup
                 </button>
 
-                <button onclick="load_restore()" onmouseover="msgs.innerHTML='Restore - Restore system data from USB'"
-                    onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                <button onclick="load_restore()" onmouseover="msgs.innerHTML='Restore - Восстановление системных данных с USB'"
+                    onmouseout="msgs.innerHTML='Готово к джейлбрейку'">
                     Restore
                 </button>
 
                 <button onclick="load_disableUpdates()"
-                    onmouseover="msgs.innerHTML='Disable Updates - Block system updates'"
-                    onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                    onmouseover="msgs.innerHTML='Disable Updates - Блокировать обновления системы'"
+                    onmouseout="msgs.innerHTML='Готово к джейлбрейку'">
                     Disable Updates
                 </button>
 
                 <button onclick="load_enableUpdates()"
-                    onmouseover="msgs.innerHTML='Enable Updates - Allow system updates'"
-                    onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                    onmouseover="msgs.innerHTML='Enable Updates - Разрешить обновления системы'"
+                    onmouseout="msgs.innerHTML='Готово к джейлбрейку'">
                     Enable Updates
                 </button>
 
-                <button onclick="load_rifRenamer()" onmouseover="msgs.innerHTML='RIF Renamer - Manage license files'"
-                    onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                <button onclick="load_rifRenamer()" onmouseover="msgs.innerHTML='RIF Renamer - Управление лицензионными файлами'"
+                    onmouseout="msgs.innerHTML='Готово к джейлбрейку'">
                     RIF Renamer
                 </button>
 
-                <button onclick="load_kernelClock()" onmouseover="msgs.innerHTML='Kernel Clock - System clock utility'"
-                    onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                <button onclick="load_kernelClock()" onmouseover="msgs.innerHTML='Kernel Clock - Утилита системных часов'"
+                    onmouseout="msgs.innerHTML='Готово к джейлбрейку'">
                     Kernel Clock
                 </button>
 
                 <button onclick="load_appcacheInstall()"
-                    onmouseover="msgs.innerHTML='AppCache Install - Install application cache'"
-                    onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                    onmouseover="msgs.innerHTML='AppCache Install - Установить кэш приложения'"
+                    onmouseout="msgs.innerHTML='Готово к джейлбрейку'">
                     AppCache Install
                 </button>
 
                 <button onclick="load_historyBlocker()"
-                    onmouseover="msgs.innerHTML='History Blocker - Block browser history tracking'"
-                    onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                    onmouseover="msgs.innerHTML='History Blocker - Блокировать отслеживание истории браузера'"
+                    onmouseout="msgs.innerHTML='Готово к джейлбрейку'">
                     History Blocker
                 </button>
 
                 <button onclick="load_pupDecrypt()"
-                    onmouseover="msgs.innerHTML='PUP Decrypt - Decrypt PS4 update files'"
-                    onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                    onmouseover="msgs.innerHTML='PUP Decrypt - Расшифровать файлы обновления PS4'"
+                    onmouseout="msgs.innerHTML='Готово к джейлбрейку'">
                     PUP Decrypt
                 </button>
             </div>
@@ -396,15 +396,15 @@
 
     <div class="credits">
         <div class="credits-line">
-            <span class="credit-label">Premium Game Servers -</span>
-            <a href="https://nodeplay.net/" class="nodeplay-link">NodePlay</a>
+            <span class="credit-label">*Дмитрий: -</span>
+            <a>+99897 7776749</a>
         </div>
         <div class="credits-line">
-            <span class="credit-label">Author:</span>
-            <a href="https://t.me/sudoBlackArch" class="telegram-link">BlackArch</a>
+            <span class="credit-label">*Телеграм Канал:</span>
+            <a href="https://t.me/Game_Play_Station" class="telegram-link">@Game_Play_Station</a>
             <span style="margin: 0 1rem;">•</span>
-            <span class="credit-label">Telegram:</span>
-            <a href="https://t.me/PlayStation_Pulse" class="credit-link">PlayStation Pulse</a>
+            <span class="credit-label">*Телеграм Бот:</span>
+            <a href="https://t.me/PS3_4Game_Bot" class="credit-link">@PS3_4Game_Bot</a>
         </div>
     </div>
 
@@ -449,99 +449,99 @@
         }
 
         function load_goldhen18() {
-            msgs.innerHTML = "Loading GoldHEN v2.4b18.8... Please Wait";
-            LoadedMSG = "GoldHEN v2.4b18.8 Loaded ✔";
+            msgs.innerHTML = "Загрузка GoldHEN v2.4b18.8... Пожалуйста, подождите";
+            LoadedMSG = "GoldHEN v2.4b18.8 Загружено ✔";
             PLfile = "goldhen.bin";
             load_payload();
         }
 
         function load_goldhen5() {
-            msgs.innerHTML = "Loading GoldHEN v2.4b18.5... Please Wait";
-            LoadedMSG = "GoldHEN v2.4b18.5 Loaded ✔";
+            msgs.innerHTML = "Загрузка GoldHEN v2.4b18.5... Пожалуйста, подождите";
+            LoadedMSG = "GoldHEN v2.4b18.5 Загружено ✔";
             PLfile = "goldhen5.bin";
             load_payload();
         }
 
         function load_ftp() {
-            msgs.innerHTML = "Loading FTP Server... Please Wait";
-            LoadedMSG = "FTP Server Loaded ✔";
+            msgs.innerHTML = "Загрузка FTP Server... Пожалуйста, подождите";
+            LoadedMSG = "FTP Server Загружено ✔";
             PLfile = "ftp.bin";
             load_payload();
         }
 
         function load_ps4debug() {
-            msgs.innerHTML = "Loading PS4Debug... Please Wait";
-            LoadedMSG = "PS4Debug Loaded ✔";
+            msgs.innerHTML = "Загрузка PS4Debug... Пожалуйста, подождите";
+            LoadedMSG = "PS4Debug Загружено ✔";
             PLfile = "ps4debug.bin";
             load_payload();
         }
 
         function load_app2usb() {
-            msgs.innerHTML = "Loading App2USB... Please Wait";
-            LoadedMSG = "App2USB Loaded ✔";
+            msgs.innerHTML = "Загрузка App2USB... Пожалуйста, подождите";
+            LoadedMSG = "App2USB Загружено ✔";
             PLfile = "app2usb.bin";
             load_payload();
         }
 
         function load_backup() {
-            msgs.innerHTML = "Loading Backup... Please Wait";
-            LoadedMSG = "Backup Loaded ✔";
+            msgs.innerHTML = "Загрузка Backup... Пожалуйста, подождите";
+            LoadedMSG = "Backup Загружено ✔";
             PLfile = "backup.bin";
             load_payload();
         }
 
         function load_restore() {
-            msgs.innerHTML = "Loading Restore... Please Wait";
-            LoadedMSG = "Restore Loaded ✔";
+            msgs.innerHTML = "Загрузка Restore... Пожалуйста, подождите";
+            LoadedMSG = "Restore Загружено ✔";
             PLfile = "restore.bin";
             load_payload();
         }
 
         function load_disableUpdates() {
-            msgs.innerHTML = "Loading Disable Updates... Please Wait";
-            LoadedMSG = "Disable Updates Loaded ✔";
+            msgs.innerHTML = "Загрузка Disable Updates... Пожалуйста, подождите";
+            LoadedMSG = "Disable Updates Загружено ✔";
             PLfile = "disable-updates.bin";
             load_payload();
         }
 
         function load_enableUpdates() {
-            msgs.innerHTML = "Loading Enable Updates... Please Wait";
-            LoadedMSG = "Enable Updates Loaded ✔";
+            msgs.innerHTML = "Загрузка Enable Updates... Пожалуйста, подождите";
+            LoadedMSG = "Enable Updates Загружено ✔";
             PLfile = "enable-updates.bin";
             load_payload();
         }
 
         function load_rifRenamer() {
-            msgs.innerHTML = "Loading RIF Renamer... Please Wait";
-            LoadedMSG = "RIF Renamer Loaded ✔";
+            msgs.innerHTML = "Загрузка RIF Renamer... Пожалуйста, подождите";
+            LoadedMSG = "RIF Renamer Загружено ✔";
             PLfile = "rif-renamer.bin";
             load_payload();
         }
 
         function load_kernelClock() {
-            msgs.innerHTML = "Loading Kernel Clock... Please Wait";
-            LoadedMSG = "Kernel Clock Loaded ✔";
+            msgs.innerHTML = "Загрузка Kernel Clock... Пожалуйста, подождите";
+            LoadedMSG = "Kernel Clock Загружено ✔";
             PLfile = "Kernel-Clock.bin";
             load_payload();
         }
 
         function load_appcacheInstall() {
-            msgs.innerHTML = "Loading AppCache Install... Please Wait";
-            LoadedMSG = "AppCache Install Loaded ✔";
+            msgs.innerHTML = "Загрузка AppCache Install... Пожалуйста, подождите";
+            LoadedMSG = "AppCache Install Загружено ✔";
             PLfile = "appcache-install.bin";
             load_payload();
         }
 
         function load_historyBlocker() {
-            msgs.innerHTML = "Loading History Blocker... Please Wait";
-            LoadedMSG = "History Blocker Loaded ✔";
+            msgs.innerHTML = "Загрузка History Blocker... Пожалуйста, подождите";
+            LoadedMSG = "History Blocker Загружено ✔";
             PLfile = "history-blocker.bin";
             load_payload();
         }
 
         function load_pupDecrypt() {
-            msgs.innerHTML = "Loading PUP Decrypt... Please Wait";
-            LoadedMSG = "PUP Decrypt Loaded ✔";
+            msgs.innerHTML = "Загрузка PUP Decrypt... Пожалуйста, подождите";
+            LoadedMSG = "PUP Decrypt Загружено ✔";
             PLfile = "pup-decrypt.bin";
             load_payload();
         }
