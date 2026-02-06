@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayStation Pulse Host Selector</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 25%, #2d2d5f 50%, #1a1a3e 75%, #0f0f23 100%);
+            background-attachment: fixed;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #ffffff;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .bg-decoration {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .floating-shape {
+            position: absolute;
+            opacity: 0.08;
+            animation: float 25s infinite linear;
+        }
+
+        .shape-1 {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #5F5EE0, #7B60F4);
+            border-radius: 50%;
+            top: 15%;
+            left: 8%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #7D5FF4, #A257E0);
+            border-radius: 30%;
+            top: 70%;
+            right: 12%;
+            animation-delay: -8s;
+        }
+
+        .shape-3 {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #A556DC, #E349A0);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            top: 45%;
+            left: 85%;
+            animation-delay: -15s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.08;
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(180deg);
+                opacity: 0.12;
+            }
+
+            100% {
+                transform: translateY(0px) rotate(360deg);
+                opacity: 0.08;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem 2rem;
+            padding-bottom: 100px;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .main-title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #5F5EE0 0%, #A556DC 50%, #E349A0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #b6b8ff;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .description {
+            font-size: 1rem;
+            color: #c5c7ff;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .version-selection {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-align: center;
+            margin: 2rem 0 1.5rem 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .version-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .version-card {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(159, 88, 227, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .version-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: 16px 16px 0 0;
+        }
+
+        /* FW 5.05 - Blue/Purple gradient */
+        .version-card.fw-505::before {
+            background: linear-gradient(90deg, #5F5EE0, #7B60F4);
+        }
+
+        .version-card.fw-505 {
+            border-color: rgba(95, 94, 224, 0.5);
+        }
+
+        .version-card.fw-505:hover,
+        .version-card.fw-505:focus {
+            border-color: rgba(123, 96, 244, 0.8);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(95, 94, 224, 0.3);
+            outline: none;
+        }
+
+        .version-card.fw-505 .version-badge {
+            background: linear-gradient(90deg, #5F5EE0, #7B60F4);
+        }
+
+        /* FW 6.72 - Purple gradient */
+        .version-card.fw-672::before {
+            background: linear-gradient(90deg, #7D5FF4, #A257E0);
+        }
+
+        .version-card.fw-672 {
+            border-color: rgba(125, 95, 244, 0.5);
+        }
+
+        .version-card.fw-672:hover,
+        .version-card.fw-672:focus {
+            border-color: rgba(162, 87, 224, 0.8);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(125, 95, 244, 0.3);
+            outline: none;
+        }
+
+        .version-card.fw-672 .version-badge {
+            background: linear-gradient(90deg, #7D5FF4, #A257E0);
+        }
+
+        /* FW 7.xx-9.xx - Pink gradient */
+        .version-card.fw-900::before {
+            background: linear-gradient(90deg, #A556DC, #E349A0);
+        }
+
+        .version-card.fw-900 {
+            border-color: rgba(165, 86, 220, 0.5);
+        }
+
+        .version-card.fw-900:hover,
+        .version-card.fw-900:focus {
+            border-color: rgba(227, 73, 160, 0.8);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(165, 86, 220, 0.3);
+            outline: none;
+        }
+
+        .version-card.fw-900 .version-badge {
+            background: linear-gradient(90deg, #A556DC, #E349A0);
+        }
+
+        .version-badge {
+            display: inline-block;
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .version-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .version-number {
+            font-size: 1rem;
+            color: #10b981;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .version-description {
+            font-size: 0.9rem;
+            color: #b6b8ff;
+            line-height: 1.5;
+        }
+
+        /* NodePlay Banner */
+        .nodeplay-banner {
+            max-width: 800px;
+            width: 100%;
+            margin-top: 1rem;
+            background: linear-gradient(135deg, rgba(109, 40, 217, 0.15) 0%, rgba(156, 39, 176, 0.15) 100%);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(156, 39, 176, 0.4);
+            border-radius: 20px;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nodeplay-banner:hover {
+            border-color: rgba(156, 39, 176, 0.7);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(109, 40, 217, 0.3);
+        }
+
+        .nodeplay-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #6D28D9, #9C27B0, #6D28D9);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        .nodeplay-banner .banner-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 1);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .nodeplay-banner .banner-brand {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF 0%, #9C27B0 50%, #6D28D9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .nodeplay-banner .banner-slogan {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .nodeplay-banner .glow-orb {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.3;
+        }
+
+        .nodeplay-banner .glow-orb.orb-1 {
+            background: #6D28D9;
+            top: -50px;
+            left: -50px;
+        }
+
+        .nodeplay-banner .glow-orb.orb-2 {
+            background: #9C27B0;
+            bottom: -50px;
+            right: -50px;
+        }
+
+        /* Credits */
+        .credits {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 25%, #2d2d5f 50%, #1a1a3e 75%, #0f0f23 100%);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 1rem;
+            text-align: center;
+            font-size: 1rem;
+            z-index: 10;
+        }
+
+        .credits-line {
+            margin: 0.25rem 0;
+        }
+
+        .nodeplay-link {
+            color: #c084fc;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nodeplay-link:hover {
+            color: #d8b4fe;
+        }
+
+        .credit-label {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .credit-link {
+            color: #ec4899;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .credit-link:hover {
+            color: #ff8fc7;
+        }
+
+        .telegram-link {
+            color: #8b5cf6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .telegram-link:hover {
+            color: #b595ff;
+        }
+
+        @media (max-width: 900px) {
+            .version-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            html,
+            body {
+                overflow-y: auto;
+                overflow-x: hidden;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .main-title {
+                font-size: 2.2rem;
+            }
+
+            .container {
+                padding: 1.5rem 1rem;
+                padding-bottom: 120px;
+                padding-top: 2rem;
+                justify-content: flex-start;
+                min-height: auto;
+            }
+
+            .section-title {
+                margin: 1rem 0;
+            }
+
+            .version-grid {
+                gap: 1rem;
+                margin: 1rem 0;
+            }
+
+            .version-card {
+                padding: 1.5rem;
+            }
+
+            .nodeplay-banner {
+                padding: 1.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .nodeplay-banner .banner-brand {
+                font-size: 1.8rem;
+            }
+
+            .nodeplay-banner .banner-title {
+                font-size: 0.85rem;
+            }
+
+            .nodeplay-banner .banner-slogan {
+                font-size: 0.75rem;
+            }
+
+            .credits {
+                position: relative;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-decoration">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <div class="container">
+        <div class="header-section">
+            <h1 class="main-title">PlayStation Pulse Host Selector</h1>
+            <p class="subtitle">Best Offline PS4 Hosts with actual GoldHEN</p>
+            <p class="description">Select your PlayStation 4 firmware version to get started with the your host</p>
+        </div>
+
+        <div class="version-selection">
+            <div class="section-title">Choose Your Firmware Version</div>
+            <div class="version-grid">
+                <div class="version-card fw-505" onclick="selectFirmware('505')" tabindex="0" data-version="505">
+                    <div class="version-badge">Firmware</div>
+                    <div class="version-title">FW 5.05</div>
+                    <div class="version-number">Offline 5.05 Host</div>
+                    <div class="version-description">
+                        Classic firmware with proven stability and wide compatibility. Ideal for users on older systems.
+                    </div>
+                </div>
+
+                <div class="version-card fw-672" onclick="selectFirmware('672')" tabindex="0" data-version="672">
+                    <div class="version-badge">Firmware</div>
+                    <div class="version-title">FW 6.72</div>
+                    <div class="version-number">Offline 6.72 Host</div>
+                    <div class="version-description">
+                        Middle-ground firmware with enhanced features and solid performance for most games.
+                    </div>
+                </div>
+
+                <div class="version-card fw-900" onclick="selectFirmware('900')" tabindex="0" data-version="900">
+                    <div class="version-badge">Firmware</div>
+                    <div class="version-title">FW 7.xx-9.xx</div>
+                    <div class="version-number">Offline PSFree</div>
+                    <div class="version-description">
+                        Latest supported firmware range with access to the newest games and features.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NodePlay Banner -->
+        <a href="https://nodeplay.net/" target="_blank" class="nodeplay-banner">
+            <div class="glow-orb orb-1"></div>
+            <div class="glow-orb orb-2"></div>
+            <div class="banner-title">Premium Game Servers</div>
+            <div class="banner-brand">NodePlay</div>
+            <div class="banner-slogan">Powered to Perfection. Played to Win.</div>
+        </a>
+    </div>
+
+    <div class="credits">
+        <div class="credits-line">
+            <span class="credit-label">Premium Game Servers -</span>
+            <a href="https://nodeplay.net/" class="nodeplay-link">NodePlay</a>
+        </div>
+        <div class="credits-line">
+            <span class="credit-label">Author:</span>
+            <a href="https://t.me/sudoBlackArch" class="telegram-link">BlackArch</a>
+            <span style="margin: 0 1rem;">•</span>
+            <span class="credit-label">Telegram:</span>
+            <a href="https://t.me/PlayStation_Pulse" class="credit-link">PlayStation Pulse</a>
+        </div>
+    </div>
+
+    <script>
+        function selectFirmware(fw) {
+            switch (fw) {
+                case '505':
+                    window.location.href = '505/index.html';
+                    break;
+                case '672':
+                    window.location.href = '672/index.html';
+                    break;
+                case '900':
+                    window.location.href = '900/version-selector.html';
+                    break;
+            }
+        }
+
+        // Gamepad navigation
+        let currentFocus = 0;
+        const cards = document.querySelectorAll('.version-card');
+
+        // Handle keyboard navigation
+        document.addEventListener('keydown', function (event) {
+            switch (event.key) {
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                    event.preventDefault();
+                    currentFocus = currentFocus > 0 ? currentFocus - 1 : cards.length - 1;
+                    cards[currentFocus].focus();
+                    break;
+                case 'ArrowRight':
+                case 'ArrowDown':
+                    event.preventDefault();
+                    currentFocus = currentFocus < cards.length - 1 ? currentFocus + 1 : 0;
+                    cards[currentFocus].focus();
+                    break;
+                case 'Enter':
+                case ' ':
+                    event.preventDefault();
+                    cards[currentFocus].click();
+                    break;
+            }
+        });
+
+        // Track focus changes
+        cards.forEach((card, index) => {
+            card.addEventListener('focus', function () {
+                currentFocus = index;
+            });
+
+            // Handle Enter key on focused element
+            card.addEventListener('keydown', function (event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
+        // Add click animation effect
+        document.querySelectorAll('.version-card').forEach(card => {
+            card.addEventListener('mousedown', function () {
+                this.style.transform = 'translateY(-2px) scale(0.98)';
+            });
+
+            card.addEventListener('mouseup', function () {
+                this.style.transform = 'translateY(-5px) scale(1)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0px) scale(1)';
+            });
+
+            card.addEventListener('blur', function () {
+                this.style.transform = 'translateY(0px) scale(1)';
+            });
+        });
+    </script>
+</body>
+
+</html>

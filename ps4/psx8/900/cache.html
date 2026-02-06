@@ -1,0 +1,331 @@
+<html manifest="PSPulse.manifest">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayStation Pulse PSFree Host 7.xx-9.xx - Auto Cache</title>
+    <script>history.replaceState(null, null, 'index.html');</script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 25%, #2d2d5f 50%, #1a1a3e 75%, #0f0f23 100%);
+            background-attachment: fixed;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #ffffff;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+
+        .bg-decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .floating-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+
+        .shape-1 {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #8b5cf6, #ec4899);
+            border-radius: 50%;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            border-radius: 30%;
+            top: 60%;
+            right: 15%;
+            animation-delay: -5s;
+        }
+
+        .shape-3 {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #1BFACC, #56FFFF);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            top: 40%;
+            left: 80%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(360deg);
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #b6b8ff;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .progress-container {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        .progress-label {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #c5c7ff;
+        }
+
+        .progress-wrapper {
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 12px;
+            padding: 4px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .progress-bar {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 8px;
+            height: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+            border-radius: 8px;
+            position: relative;
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            z-index: 3;
+        }
+
+        .status-message {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #c5c7ff;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .credits {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 25%, #2d2d5f 50%, #1a1a3e 75%, #0f0f23 100%);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 1rem;
+            text-align: center;
+            font-size: 1rem;
+            z-index: 10;
+        }
+
+        .credits-line {
+            margin: 0.25rem 0;
+        }
+
+        .nodeplay-link {
+            color: #c084fc;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nodeplay-link:hover {
+            color: #d8b4fe;
+        }
+
+        .credit-label {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .credit-link {
+            color: #ec4899;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .credit-link:hover {
+            color: #ff8fc7;
+        }
+
+        .telegram-link {
+            color: #8b5cf6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .telegram-link:hover {
+            color: #b595ff;
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .progress-container {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-decoration">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <div class="container">
+        <div class="logo-section">
+            <h1 class="main-title">PlayStation Pulse PSFree Host 7.xx-9.xx</h1>
+            <p class="subtitle">Loading Offline Cache</p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-label" id="progress">Loading.. Please Wait !!!</div>
+            <div class="progress-wrapper">
+                <div class="progress-bar" id="myProgress">
+                    <div class="progress-fill" id="myBar"></div>
+                    <div class="progress-text" id="progressText">0%</div>
+                </div>
+            </div>
+            <div class="status-message">Initializing cache system...</div>
+        </div>
+    </div>
+
+    <div class="credits">
+        <div class="credits-line">
+            <span class="credit-label">Premium Game Servers -</span>
+            <a href="https://nodeplay.net/" class="nodeplay-link">NodePlay</a>
+        </div>
+        <div class="credits-line">
+            <span class="credit-label">Author:</span>
+            <a href="https://t.me/sudoBlackArch" class="telegram-link">BlackArch</a>
+            <span style="margin: 0 1rem;">•</span>
+            <span class="credit-label">Telegram:</span>
+            <a href="https://t.me/PlayStation_Pulse" class="credit-link">PlayStation Pulse</a>
+        </div>
+    </div>
+
+    <script>
+        if (window.applicationCache.status == 2) { localStorage.is755BCached = true; }
+        window.applicationCache.ondownloading = function () {
+            document.getElementById("progress").innerHTML = "Page Caching Started!!";
+            localStorage.is755BCached = false;
+        };
+        window.applicationCache.onprogress = function (a) {
+            const progress = Math.round(100 * (a.loaded / a.total));
+            document.getElementById("myBar").style.width = progress + "%";
+            document.getElementById("progressText").innerHTML = progress + "%";
+        };
+        window.applicationCache.oncached = function () {
+            document.getElementById("progress").innerHTML = "Page Cached Successfully!!!";
+            localStorage.is755BCached = true;
+            setTimeout(function () { window.location.reload("myBar"); }, 1500);
+        };
+        window.applicationCache.onupdateready = function () {
+            document.getElementById("progress").innerHTML = "Update Cache Successfully!!!";
+            localStorage.is755BCached = true;
+            setTimeout(function () { window.location.reload("myBar"); }, 1500);
+        };
+        window.applicationCache.onnoupdate = function () { window.location.replace("index.html"); };
+        window.applicationCache.onerror = function () { window.location.replace("index.html"); };
+
+        // Fallback progress animation
+        var width = 0;
+        function frame1() {
+            var elem = document.getElementById("myBar");
+            var text = document.getElementById("progressText");
+            var i = 0;
+            var id = setInterval(fra, 10);
+            function fra() {
+                if (i < 10 && width < 100) {
+                    width++;
+                    elem.style.width = width + "%";
+                    text.innerHTML = width + "%";
+                }
+                i++;
+            }
+        }
+    </script>
+</body>
+
+</html>

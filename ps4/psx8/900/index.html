@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayStation Pulse PSFree Host 7.xx-9.xx</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 25%, #2d2d5f 50%, #1a1a3e 75%, #0f0f23 100%);
+            background-attachment: fixed;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #ffffff;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .bg-decoration {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .floating-shape {
+            position: absolute;
+            opacity: 0.08;
+            animation: float 25s infinite linear;
+        }
+
+        .shape-1 {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #8b5cf6, #ec4899);
+            border-radius: 50%;
+            top: 15%;
+            left: 8%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            border-radius: 30%;
+            top: 70%;
+            right: 12%;
+            animation-delay: -8s;
+        }
+
+        .shape-3 {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #1BFACC, #56FFFF);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            top: 45%;
+            left: 85%;
+            animation-delay: -15s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.08;
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(180deg);
+                opacity: 0.12;
+            }
+
+            100% {
+                transform: translateY(0px) rotate(360deg);
+                opacity: 0.08;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            padding-bottom: 100px;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 0.3rem;
+        }
+
+        .main-title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #b6b8ff;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .version-info {
+            font-size: 1rem;
+            color: #10b981;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .status-container {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 0.3rem;
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .jailbreak-status {
+            font-size: 1.1rem;
+            color: #888ae9;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        .notification {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            max-width: 800px;
+            width: 100%;
+            min-height: 80px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .notification2 {
+            animation: fadeOut 0.4s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+            }
+        }
+
+        #log {
+            color: #10b981;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+
+
+        .controls-section {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-align: center;
+            margin: 0.8rem 0 0.8rem 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        button {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            border: 2px solid rgba(99, 102, 241, 0.5);
+            border-radius: 12px;
+            padding: 0.8rem 1.2rem;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            background: rgba(30, 41, 59, 0.4);
+            color: #e2e8f0;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border: 2px solid #d3d5ff;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            background: linear-gradient(135deg, #ef4444, #f97316);
+            transform: translateY(0px);
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+            color: #ffffff;
+        }
+
+        .fw-display {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 25px;
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            color: #dddeff;
+            margin: 1rem 0;
+        }
+
+        .credits {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 25%, #2d2d5f 50%, #1a1a3e 75%, #0f0f23 100%);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 1rem;
+            text-align: center;
+            font-size: 1rem;
+            z-index: 10;
+        }
+
+        .credits-line {
+            margin: 0.25rem 0;
+        }
+
+        .credit-label {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .credit-link {
+            color: #ec4899;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .credit-link:hover {
+            color: #ff8fc7;
+        }
+
+        .telegram-link {
+            color: #8b5cf6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .telegram-link:hover {
+            color: #b595ff;
+        }
+
+        .nodeplay-link {
+            color: #c084fc;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .nodeplay-link:hover {
+            color: #d8b4fe;
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.2rem;
+            }
+
+            .container {
+                padding: 1rem;
+                padding-bottom: 100px;
+            }
+
+            .status-container {
+                padding: 1rem;
+            }
+
+            .buttons-grid {
+                grid-template-columns: 1fr;
+                gap: 0.6rem;
+            }
+
+            .credits {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+    <script>
+        if (window.applicationCache.status == '0') {
+            window.location.replace("version-selector.html");
+        }
+    </script>
+    <script defer src="payloads.js"></script>
+    <script defer src="loader.js"></script>
+    <script type="module" src="alert.js"></script>
+</head>
+
+<body onload="load_exploit()">
+    <div class="bg-decoration">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <div class="container">
+        <div class="header-section">
+            <h1 class="main-title">PlayStation Pulse PSFree Host 7.xx-9.xx</h1>
+            <p class="subtitle">Online and Offline Lapse Auto GoldHen by Telegram PlayStation Pulse</p>
+            <p class="version-info">PSfree1.6 FW 7.xx-9.xx GoldHEN v2.4b18.8</p>
+            <div class="fw-display">FW - <span id="PS4fw"></span></div>
+        </div>
+
+        <div class="status-container">
+            <div id="notify" class="notification">
+                <div id="log"></div>
+            </div>
+            <div class="jailbreak-status" id="msgs2">Ready to Jailbreak</div>
+            <div style="margin-top: 0.5rem; font-size: 0.9rem; color: #7172a1;">
+                <span>Successful attempts: <span id="passCounter" style="color: #10b981;">0</span></span>
+                <span style="margin-left: 1rem;">Unsuccessful attempts: <span id="failCounter"
+                        style="color: #ef4444;">0</span></span>
+            </div>
+        </div>
+
+        <div class="controls-section">
+
+
+            <div class="section-title">Payloads</div>
+            <div class="buttons-grid">
+                <button onclick="load_PSFreeFix()"
+                    onMouseOver="document.getElementById('msgs2').innerHTML='PSFree Fix - Fixes PS4 PSFree exploit issues'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                    PSFree Fix
+                </button>
+
+                <button onclick="load_ftp()"
+                    onMouseOver="document.getElementById('msgs2').innerHTML='FTP Server - Start FTP server for file access'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                    FTP Server
+                </button>
+
+                <button onclick="load_ps4debug()"
+                    onMouseOver="document.getElementById('msgs2').innerHTML='PS4Debug - Enable debugging features'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                    PS4Debug
+                </button>
+
+                <button onclick="load_app2usb()"
+                    onMouseOver="document.getElementById('msgs2').innerHTML='App2USB - Transfer applications to USB storage'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                    App2USB
+                </button>
+
+                <button onclick="load_backup()"
+                    onMouseOver="document.getElementById('msgs2').innerHTML='Backup - Backup system data to USB'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                    Backup
+                </button>
+
+                <button onclick="load_restore()"
+                    onMouseOver="document.getElementById('msgs2').innerHTML='Restore - Restore system data from USB'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                    Restore
+                </button>
+
+                <button onclick="load_disable_updates()"
+                    onMouseOver="document.getElementById('msgs2').innerHTML='Disable Updates - Block system updates'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                    Disable Updates
+                </button>
+
+                <button onclick="load_enable_updates()"
+                    onMouseOver="document.getElementById('msgs2').innerHTML='Enable Updates - Allow system updates'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                    Enable Updates
+                </button>
+
+                <button onclick="load_appcache_install()"
+                    onMouseOver="document.getElementById('msgs2').innerHTML='AppCache Install - Install application cache'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                    AppCache Install
+                </button>
+
+                <button onclick="load_history_blocker()"
+                    onMouseOver="document.getElementById('msgs2').innerHTML='History Blocker - Block browser history tracking'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                    History Blocker
+                </button>
+
+                <button onclick="load_pup_decrypt()"
+                    onMouseOver="document.getElementById('msgs2').innerHTML='PUP Decrypt - Decrypt PS4 update files'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                    PUP Decrypt
+                </button>
+
+                <button onclick="load_rif_renamer()"
+                    onMouseOver="document.getElementById('msgs2').innerHTML='RIF Renamer - Manage license files'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                    RIF Renamer
+                </button>
+
+                <button onclick="load_webrte()"
+                    onMouseOver="document.getElementById('msgs2').innerHTML='WebRTE - Real-time editing features'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                    WebRTE
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="credits">
+        <div class="credits-line">
+            <span class="credit-label">Premium Game Servers -</span>
+            <a href="https://nodeplay.net/" class="nodeplay-link">NodePlay</a>
+        </div>
+        <div class="credits-line">
+            <span class="credit-label">Author:</span>
+            <a href="https://t.me/sudoBlackArch" class="telegram-link">BlackArch</a>
+            <span style="margin: 0 1rem;">•</span>
+            <span class="credit-label">Telegram:</span>
+            <a href="https://t.me/PlayStation_Pulse" class="credit-link">PlayStation Pulse</a>
+        </div>
+    </div>
+
+    <script>
+        // Firmware detection
+        UA = navigator.userAgent.substring(navigator.userAgent.indexOf("6.72 (") + 28, navigator.userAgent.indexOf(") Apple"));
+        // 7.xx
+        if (UA == "layStation 4/7.00") UA = "7.00";
+        if (UA == "layStation 4/7.01") UA = "7.01";
+        if (UA == "layStation 4/7.02") UA = "7.02";
+        if (UA == "layStation 4/7.50") UA = "7.50";
+        if (UA == "layStation 4/7.51") UA = "7.51";
+        if (UA == "layStation 4/7.55") UA = "7.55";
+        // 8.xx
+        if (UA == "layStation 4/8.00") UA = "8.00";
+        if (UA == "layStation 4/8.01") UA = "8.01";
+        if (UA == "layStation 4/8.03") UA = "8.03";
+        if (UA == "layStation 4/8.50") UA = "8.50";
+        if (UA == "layStation 4/8.52") UA = "8.52";
+        // 9.xx
+        if (UA == "layStation 4/9.00") UA = "9.00";
+        if (UA == "layStation 4/9.03") UA = "9.03";
+        if (UA == "layStation 4/9.04") UA = "9.04";
+        if (UA == "layStation 4/9.50") UA = "9.50";
+        if (UA == "layStation 4/9.51") UA = "9.51";
+        if (UA == "layStation 4/9.60") UA = "9.60";
+        if (UA == "layStation 4/99.99") UA = "99.99";
+
+        var supportedFW = ["7.00", "7.01", "7.02", "7.50", "7.51", "7.55", "8.00", "8.01", "8.03", "8.50", "8.52", "9.00", "9.03", "9.04", "9.50", "9.51", "9.60", "99.99"];
+        if (!supportedFW.includes(UA))
+            alert("This Is For PS4 FW 7.xx - 9.xx Only!");
+        document.getElementById("PS4fw").innerHTML = "" + UA + "";
+
+        // Statistics initialization
+        if (localStorage.passcount == null || localStorage.passcount == undefined) localStorage.passcount = 0;
+        if (localStorage.failcount == null || localStorage.failcount == undefined) localStorage.failcount = 0;
+
+        // Update counters on page load
+        if (document.getElementById("passCounter")) {
+            document.getElementById("passCounter").innerHTML = localStorage.passcount;
+        }
+        if (document.getElementById("failCounter")) {
+            document.getElementById("failCounter").innerHTML = localStorage.failcount;
+        }
+    </script>
+</body>
+
+</html>
