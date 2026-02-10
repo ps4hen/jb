@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PlayStation Pulse PSFree Host 9.xx - Auto Cache</title>
+    <title>PSFree Хост 9.xx - Автоматический Кэш (GoldHEN v2.4b18.8)</title>
     <script>history.replaceState(null, null, 'index.html');</script>
     <style>
         * {
@@ -255,40 +255,40 @@
 
     <div class="container">
         <div class="logo-section">
-            <h1 class="main-title">PlayStation Pulse PSFree Host 9.xx</h1>
-            <p class="subtitle">Loading Offline Cache</p>
+            <h1 class="main-title">PSFree Хост 9.xx</h1>
+            <p class="subtitle">Загрузка Оффлайн Кэша</p>
         </div>
 
         <div class="progress-container">
-            <div class="progress-label" id="progress">Loading.. Please Wait !!!</div>
+            <div class="progress-label" id="progress">Загрузка... Пожалуйста, подождите !!!</div>
             <div class="progress-wrapper">
                 <div class="progress-bar" id="myProgress">
                     <div class="progress-fill" id="myBar"></div>
                     <div class="progress-text" id="progressText">0%</div>
                 </div>
             </div>
-            <div class="status-message">Initializing cache system...</div>
+            <div class="status-message">Инициализация системы кэширования...</div>
         </div>
     </div>
 
     <div class="credits">
         <div class="credits-line">
-            <span class="credit-label">Premium Game Servers -</span>
-            <a href="https://nodeplay.net/" class="nodeplay-link">NodePlay</a>
+            <span class="credit-label">*Дмитрий:</span>
+            <a>+99897 7776749</a>
         </div>
         <div class="credits-line">
-            <span class="credit-label">Author:</span>
-            <a href="https://t.me/sudoBlackArch" class="telegram-link">BlackArch</a>
+            <span class="credit-label">*Телеграм Канал:</span>
+            <a href="https://t.me/Game_Play_Station" class="telegram-link">@Game_Play_Station</a>
             <span style="margin: 0 1rem;">•</span>
-            <span class="credit-label">Telegram:</span>
-            <a href="https://t.me/PlayStation_Pulse" class="credit-link">PlayStation Pulse</a>
+            <span class="credit-label">*Телеграм Бот:</span>
+            <a href="https://t.me/PS3_4Game_Bot" class="credit-link">@PS3_4Game_Bot</a>
         </div>
     </div>
 
     <script>
         if (window.applicationCache.status == 2) { localStorage.is755BCached = true; }
         window.applicationCache.ondownloading = function () {
-            document.getElementById("progress").innerHTML = "Page Caching Started!!";
+            document.getElementById("progress").innerHTML = "Кэширование страницы началось!!";
             localStorage.is755BCached = false;
         };
         window.applicationCache.onprogress = function (a) {
@@ -297,12 +297,12 @@
             document.getElementById("progressText").innerHTML = progress + "%";
         };
         window.applicationCache.oncached = function () {
-            document.getElementById("progress").innerHTML = "Page Cached Successfully!!!";
+            document.getElementById("progress").innerHTML = "Страница успешно закэширована!!!";
             localStorage.is755BCached = true;
             setTimeout(function () { window.location.reload("myBar"); }, 1500);
         };
         window.applicationCache.onupdateready = function () {
-            document.getElementById("progress").innerHTML = "Update Cache Successfully!!!";
+            document.getElementById("progress").innerHTML = "Кэш успешно обновлён!!!";
             localStorage.is755BCached = true;
             setTimeout(function () { window.location.reload("myBar"); }, 1500);
         };
