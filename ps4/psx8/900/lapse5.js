@@ -41,12 +41,6 @@ import * as rop from './module/chain.js';
 import * as config from './config.js';
 
 // static imports for firmware configurations
-import * as fw_ps4_700 from "./lapse/700.js";
-import * as fw_ps4_750 from "./lapse/750.js";
-import * as fw_ps4_751 from "./lapse/751.js";
-import * as fw_ps4_800 from "./lapse/800.js";
-import * as fw_ps4_850 from "./lapse/850.js";
-import * as fw_ps4_852 from "./lapse/852.js";
 import * as fw_ps4_900 from "./lapse/900.js";
 import * as fw_ps4_903 from "./lapse/903.js";
 import * as fw_ps4_950 from "./lapse/950.js";
@@ -75,30 +69,6 @@ const [is_ps4, version] = (() => {
 
 const fw_config = (() => {
     if (is_ps4) {
-        // 7.00, 7.01, 7.02
-        if (0x700 <= config.target && config.target < 0x750) {
-            return fw_ps4_700;
-        }
-        // 7.50
-        if (0x750 <= config.target && config.target < 0x751) {
-            return fw_ps4_750;
-        }
-        // 7.51, 7.55
-        if (0x751 <= config.target && config.target < 0x800) {
-            return fw_ps4_751;
-        }
-        // 8.00, 8.01, 8.03
-        if (0x800 <= config.target && config.target < 0x850) {
-            return fw_ps4_800;
-        }
-        // 8.50
-        if (0x850 <= config.target && config.target < 0x852) {
-            return fw_ps4_850;
-        }
-        // 8.52
-        if (0x852 <= config.target && config.target < 0x900) {
-            return fw_ps4_852;
-        }
         // 9.00
         if (0x900 <= config.target && config.target < 0x903) {
             return fw_ps4_900;

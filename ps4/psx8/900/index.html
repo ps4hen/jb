@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PSFree Хост 7.xx-9.xx</title>
+    <title>PlayStation Pulse PSFree Host 9.xx</title>
     <style>
         * {
             margin: 0;
@@ -339,9 +339,9 @@
 
     <div class="container">
         <div class="header-section">
-            <h1 class="main-title">PSFree Хост 7.xx-9.xx</h1>
-            <p class="subtitle">Автоматический GoldHEN Lapse для онлайн и оффлайн режимов</p>
-            <p class="version-info">FW 7.xx-9.xx GoldHEN v2.4b18.8</p>
+            <h1 class="main-title">PlayStation Pulse PSFree Host 9.xx</h1>
+            <p class="subtitle">Online and Offline Lapse Auto GoldHen by Telegram PlayStation Pulse</p>
+            <p class="version-info">PSfree1.7 FW 9.xx GoldHEN v2.4b18.8</p>
             <div class="fw-display">FW - <span id="PS4fw"></span></div>
         </div>
 
@@ -349,10 +349,10 @@
             <div id="notify" class="notification">
                 <div id="log"></div>
             </div>
-            <div class="jailbreak-status" id="msgs2">Готово к джейлбрейку</div>
+            <div class="jailbreak-status" id="msgs2">Ready to Jailbreak</div>
             <div style="margin-top: 0.5rem; font-size: 0.9rem; color: #7172a1;">
-                <span>Успешные попытки: <span id="passCounter" style="color: #10b981;">0</span></span>
-                <span style="margin-left: 1rem;">Неудачные попытки: <span id="failCounter"
+                <span>Successful attempts: <span id="passCounter" style="color: #10b981;">0</span></span>
+                <span style="margin-left: 1rem;">Unsuccessful attempts: <span id="failCounter"
                         style="color: #ef4444;">0</span></span>
             </div>
         </div>
@@ -363,80 +363,80 @@
             <div class="section-title">Payloads</div>
             <div class="buttons-grid">
                 <button onclick="load_PSFreeFix()"
-                    onMouseOver="document.getElementById('msgs2').innerHTML='PSFree Fix - Исправляет проблемы с эксплойтом PS4 PSFree'"
-                    onmouseout="document.getElementById('msgs2').innerHTML='Готово к джейлбрейку'">
+                    onMouseOver="document.getElementById('msgs2').innerHTML='PSFree Fix - Fixes PS4 PSFree exploit issues'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
                     PSFree Fix
                 </button>
 
                 <button onclick="load_ftp()"
-                    onMouseOver="document.getElementById('msgs2').innerHTML='FTP Server - Запустить FTP-сервер для доступа к файлам'"
-                    onmouseout="document.getElementById('msgs2').innerHTML='Готово к джейлбрейку'">
+                    onMouseOver="document.getElementById('msgs2').innerHTML='FTP Server - Start FTP server for file access'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
                     FTP Server
                 </button>
 
                 <button onclick="load_ps4debug()"
-                    onMouseOver="document.getElementById('msgs2').innerHTML='PS4Debug - Включить функции отладки'"
-                    onmouseout="document.getElementById('msgs2').innerHTML='Готово к джейлбрейку'">
+                    onMouseOver="document.getElementById('msgs2').innerHTML='PS4Debug - Enable debugging features'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
                     PS4Debug
                 </button>
 
                 <button onclick="load_app2usb()"
-                    onMouseOver="document.getElementById('msgs2').innerHTML='App2USB - Перенос приложений на USB-накопитель'"
-                    onmouseout="document.getElementById('msgs2').innerHTML='Готово к джейлбрейку'">
+                    onMouseOver="document.getElementById('msgs2').innerHTML='App2USB - Transfer applications to USB storage'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
                     App2USB
                 </button>
 
                 <button onclick="load_backup()"
-                    onMouseOver="document.getElementById('msgs2').innerHTML='Backup - Резервное копирование системных данных на USB'"
-                    onmouseout="document.getElementById('msgs2').innerHTML='Готово к джейлбрейку'">
+                    onMouseOver="document.getElementById('msgs2').innerHTML='Backup - Backup system data to USB'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
                     Backup
                 </button>
 
                 <button onclick="load_restore()"
-                    onMouseOver="document.getElementById('msgs2').innerHTML='Restore - Восстановление системных данных с USB'"
-                    onmouseout="document.getElementById('msgs2').innerHTML='Готово к джейлбрейку'">
+                    onMouseOver="document.getElementById('msgs2').innerHTML='Restore - Restore system data from USB'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
                     Restore
                 </button>
 
                 <button onclick="load_disable_updates()"
-                    onMouseOver="document.getElementById('msgs2').innerHTML='Disable Updates - Блокировать обновления системы'"
-                    onmouseout="document.getElementById('msgs2').innerHTML='Готово к джейлбрейку'">
+                    onMouseOver="document.getElementById('msgs2').innerHTML='Disable Updates - Block system updates'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
                     Disable Updates
                 </button>
 
                 <button onclick="load_enable_updates()"
-                    onMouseOver="document.getElementById('msgs2').innerHTML='Enable Updates - Разрешить обновления системы'"
-                    onmouseout="document.getElementById('msgs2').innerHTML='Готово к джейлбрейку'">
+                    onMouseOver="document.getElementById('msgs2').innerHTML='Enable Updates - Allow system updates'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
                     Enable Updates
                 </button>
 
                 <button onclick="load_appcache_install()"
-                    onMouseOver="document.getElementById('msgs2').innerHTML='AppCache Install - Установить кэш приложения'"
-                    onmouseout="document.getElementById('msgs2').innerHTML='Готово к джейлбрейку'">
+                    onMouseOver="document.getElementById('msgs2').innerHTML='AppCache Install - Install application cache'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
                     AppCache Install
                 </button>
-				
-                <button onclick="load_rif_renamer()"
-                    onMouseOver="document.getElementById('msgs2').innerHTML='RIF Renamer - Управление лицензионными файлами'"
-                    onmouseout="document.getElementById('msgs2').innerHTML='Готово к джейлбрейку'">
-                    RIF Renamer
-                </button>				
 
                 <button onclick="load_history_blocker()"
-                    onMouseOver="document.getElementById('msgs2').innerHTML='History Blocker - Блокировать отслеживание истории браузера'"
-                    onmouseout="document.getElementById('msgs2').innerHTML='Готово к джейлбрейку'">
+                    onMouseOver="document.getElementById('msgs2').innerHTML='History Blocker - Block browser history tracking'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
                     History Blocker
                 </button>
 
                 <button onclick="load_pup_decrypt()"
-                    onMouseOver="document.getElementById('msgs2').innerHTML='PUP Decrypt - Расшифровать файлы обновления PS4'"
-                    onmouseout="document.getElementById('msgs2').innerHTML='Готово к джейлбрейку'">
+                    onMouseOver="document.getElementById('msgs2').innerHTML='PUP Decrypt - Decrypt PS4 update files'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
                     PUP Decrypt
                 </button>
 
+                <button onclick="load_rif_renamer()"
+                    onMouseOver="document.getElementById('msgs2').innerHTML='RIF Renamer - Manage license files'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
+                    RIF Renamer
+                </button>
+
                 <button onclick="load_webrte()"
-                    onMouseOver="document.getElementById('msgs2').innerHTML='WebRTE - Функции редактирования в реальном времени'"
-                    onmouseout="document.getElementById('msgs2').innerHTML='Готово к джейлбрейку'">
+                    onMouseOver="document.getElementById('msgs2').innerHTML='WebRTE - Real-time editing features'"
+                    onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">
                     WebRTE
                 </button>
             </div>
@@ -445,34 +445,21 @@
 
     <div class="credits">
         <div class="credits-line">
-            <span class="credit-label">*Дмитрий:</span>
-            <a>+99897 7776749</a>
+            <span class="credit-label">Premium Game Servers -</span>
+            <a href="https://nodeplay.net/" class="nodeplay-link">NodePlay</a>
         </div>
         <div class="credits-line">
-            <span class="credit-label">*Телеграм Канал:</span>
-            <a href="https://t.me/Game_Play_Station" class="telegram-link">@Game_Play_Station</a>
+            <span class="credit-label">Author:</span>
+            <a href="https://t.me/sudoBlackArch" class="telegram-link">BlackArch</a>
             <span style="margin: 0 1rem;">•</span>
-            <span class="credit-label">*Телеграм Бот:</span>
-            <a href="https://t.me/PS3_4Game_Bot" class="credit-link">@PS3_4Game_Bot</a>
+            <span class="credit-label">Telegram:</span>
+            <a href="https://t.me/PlayStation_Pulse" class="credit-link">PlayStation Pulse</a>
         </div>
     </div>
 
     <script>
         // Firmware detection
         UA = navigator.userAgent.substring(navigator.userAgent.indexOf("6.72 (") + 28, navigator.userAgent.indexOf(") Apple"));
-        // 7.xx
-        if (UA == "layStation 4/7.00") UA = "7.00";
-        if (UA == "layStation 4/7.01") UA = "7.01";
-        if (UA == "layStation 4/7.02") UA = "7.02";
-        if (UA == "layStation 4/7.50") UA = "7.50";
-        if (UA == "layStation 4/7.51") UA = "7.51";
-        if (UA == "layStation 4/7.55") UA = "7.55";
-        // 8.xx
-        if (UA == "layStation 4/8.00") UA = "8.00";
-        if (UA == "layStation 4/8.01") UA = "8.01";
-        if (UA == "layStation 4/8.03") UA = "8.03";
-        if (UA == "layStation 4/8.50") UA = "8.50";
-        if (UA == "layStation 4/8.52") UA = "8.52";
         // 9.xx
         if (UA == "layStation 4/9.00") UA = "9.00";
         if (UA == "layStation 4/9.03") UA = "9.03";
@@ -482,9 +469,9 @@
         if (UA == "layStation 4/9.60") UA = "9.60";
         if (UA == "layStation 4/99.99") UA = "99.99";
 
-        var supportedFW = ["7.00", "7.01", "7.02", "7.50", "7.51", "7.55", "8.00", "8.01", "8.03", "8.50", "8.52", "9.00", "9.03", "9.04", "9.50", "9.51", "9.60", "99.99"];
+        var supportedFW = ["9.00", "9.03", "9.04", "9.50", "9.51", "9.60", "99.99"];
         if (!supportedFW.includes(UA))
-            alert("Только для PS4 с прошивкой 7.xx – 9.xx!");
+            alert("This Is For PS4 FW 9.xx Only!");
         document.getElementById("PS4fw").innerHTML = "" + UA + "";
 
         // Statistics initialization
