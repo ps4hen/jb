@@ -133,7 +133,7 @@
         }
 
         .version-selection {
-            max-width: 1000px;
+            max-width: 1200px;
             width: 100%;
         }
 
@@ -149,7 +149,7 @@
 
         .version-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
             margin: 2rem 0;
         }
@@ -219,7 +219,28 @@
             background: linear-gradient(90deg, #7D5FF4, #A257E0);
         }
 
-        /* FW 7.xx-9.xx - Pink gradient */
+        /* FW 7.xx-8.xx - Purple-Pink gradient */
+        .version-card.fw-700::before {
+            background: linear-gradient(90deg, #9058E0, #C84DB8);
+        }
+
+        .version-card.fw-700 {
+            border-color: rgba(144, 88, 224, 0.5);
+        }
+
+        .version-card.fw-700:hover,
+        .version-card.fw-700:focus {
+            border-color: rgba(200, 77, 184, 0.8);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(144, 88, 224, 0.3);
+            outline: none;
+        }
+
+        .version-card.fw-700 .version-badge {
+            background: linear-gradient(90deg, #9058E0, #C84DB8);
+        }
+
+        /* FW 9.xx - Pink gradient */
         .version-card.fw-900::before {
             background: linear-gradient(90deg, #A556DC, #E349A0);
         }
@@ -425,10 +446,17 @@
             color: #b595ff;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1100px) {
+            .version-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
             .version-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 1rem;
             }
         }
 
@@ -511,7 +539,7 @@
                 <div class="version-card fw-505" onclick="selectFirmware('505')" tabindex="0" data-version="505">
                     <div class="version-badge">Прошивка</div>
                     <div class="version-title">FW 5.05</div>
-                    <div class="version-number">Offline 5.05 Host</div>
+                    <div class="version-number">Offline 5.05 Хост</div>
                     <div class="version-description">
                         Классическая прошивка с проверенной стабильностью и широкой совместимостью. Идеальна для пользователей на старых системах.
                     </div>
@@ -520,23 +548,31 @@
                 <div class="version-card fw-672" onclick="selectFirmware('672')" tabindex="0" data-version="672">
                     <div class="version-badge">Прошивка</div>
                     <div class="version-title">FW 6.72</div>
-                    <div class="version-number">Offline 6.72 Host</div>
+                    <div class="version-number">Offline 6.72 Хост</div>
                     <div class="version-description">
                         Промежуточная прошивка с улучшенными функциями и надёжной производительностью для большинства игр.
                     </div>
                 </div>
 
+                <div class="version-card fw-700" onclick="selectFirmware('700')" tabindex="0" data-version="700">
+                    <div class="version-badge">Прошивка</div>
+                    <div class="version-title">FW 7.xx-8.xx</div>
+                    <div class="version-number">Offline Хост</div>
+                    <div class="version-description">
+                        Диапазон прошивок 7.00–8.52 с эксплойтом PSFree. Широкая совместимость с играми и стабильная производительность.
+                    </div>
+                </div>
+
                 <div class="version-card fw-900" onclick="selectFirmware('900')" tabindex="0" data-version="900">
                     <div class="version-badge">Прошивка</div>
-                    <div class="version-title">FW 7.xx-9.xx</div>
-                    <div class="version-number">Offline PSFree</div>
+                    <div class="version-title">FW 9.xx</div>
+                    <div class="version-number">Offline Хост</div>
                     <div class="version-description">
                         Последняя поддерживаемая версия прошивки с доступом к новейшим играм и функциям.
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <div class="credits">
         <div class="credits-line">
@@ -561,72 +597,72 @@
                 case '672':
                     window.location.href = '672/index.html';
                     break;
+                case '700':
+                    window.location.href = '700/version-selector.html';
+                    break;
                 case '900':
                     window.location.href = '900/version-selector.html';
                     break;
             }
         }
 
-        // Gamepad navigation
-        let currentFocus = 0;
-        const cards = document.querySelectorAll('.version-card');
+        // Gamepad / D-pad navigation for PS4 browser
+        // PS4 browser moves a visible cursor with D-pad arrows.
+        // We must NOT call event.preventDefault() on arrow keys,
+        // otherwise the cursor stays in place while only CSS :focus moves.
+        // Instead we let the browser handle cursor movement natively
+        // and track which card has focus via the focus event.
 
-        // Handle keyboard navigation
-        document.addEventListener('keydown', function (event) {
-            switch (event.key) {
-                case 'ArrowLeft':
-                case 'ArrowUp':
-                    event.preventDefault();
-                    currentFocus = currentFocus > 0 ? currentFocus - 1 : cards.length - 1;
-                    cards[currentFocus].focus();
-                    break;
-                case 'ArrowRight':
-                case 'ArrowDown':
-                    event.preventDefault();
-                    currentFocus = currentFocus < cards.length - 1 ? currentFocus + 1 : 0;
-                    cards[currentFocus].focus();
-                    break;
-                case 'Enter':
-                case ' ':
-                    event.preventDefault();
+        var currentFocus = -1;
+        var cards = document.querySelectorAll('.version-card');
+
+        // Track focus changes — fires when PS4 cursor lands on a card
+        for (var i = 0; i < cards.length; i++) {
+            (function (index) {
+                cards[index].addEventListener('focus', function () {
+                    currentFocus = index;
+                });
+
+                // Handle Enter / X-button on focused card
+                cards[index].addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.keyCode === 13 || e.key === ' ' || e.keyCode === 32) {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            })(i);
+        }
+
+        // Global Enter/Space fallback (in case focus is not on a card)
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.keyCode === 13 || e.key === ' ' || e.keyCode === 32) {
+                if (currentFocus >= 0 && currentFocus < cards.length) {
+                    e.preventDefault();
                     cards[currentFocus].click();
-                    break;
+                }
             }
         });
 
-        // Track focus changes
-        cards.forEach((card, index) => {
-            card.addEventListener('focus', function () {
-                currentFocus = index;
-            });
-
-            // Handle Enter key on focused element
-            card.addEventListener('keydown', function (event) {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    this.click();
-                }
-            });
-        });
-
         // Add click animation effect
-        document.querySelectorAll('.version-card').forEach(card => {
-            card.addEventListener('mousedown', function () {
-                this.style.transform = 'translateY(-2px) scale(0.98)';
-            });
+        for (var j = 0; j < cards.length; j++) {
+            (function (card) {
+                card.addEventListener('mousedown', function () {
+                    this.style.transform = 'translateY(-2px) scale(0.98)';
+                });
 
-            card.addEventListener('mouseup', function () {
-                this.style.transform = 'translateY(-5px) scale(1)';
-            });
+                card.addEventListener('mouseup', function () {
+                    this.style.transform = 'translateY(-5px) scale(1)';
+                });
 
-            card.addEventListener('mouseleave', function () {
-                this.style.transform = 'translateY(0px) scale(1)';
-            });
+                card.addEventListener('mouseleave', function () {
+                    this.style.transform = 'translateY(0px) scale(1)';
+                });
 
-            card.addEventListener('blur', function () {
-                this.style.transform = 'translateY(0px) scale(1)';
-            });
-        });
+                card.addEventListener('blur', function () {
+                    this.style.transform = 'translateY(0px) scale(1)';
+                });
+            })(cards[j]);
+        }
     </script>
 </body>
 
